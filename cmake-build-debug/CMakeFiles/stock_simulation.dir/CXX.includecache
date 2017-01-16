@@ -1,0 +1,46 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/Users/huyiqing/ClionProjects/stock_simulation/main.cpp
+iostream
+-
+random_demo.cpp
+/Users/huyiqing/ClionProjects/stock_simulation/random_demo.cpp
+fstream
+-
+
+/Users/huyiqing/ClionProjects/stock_simulation/market.cpp
+market.h
+/Users/huyiqing/ClionProjects/stock_simulation/market.h
+
+/Users/huyiqing/ClionProjects/stock_simulation/market.h
+vector
+-
+
+/Users/huyiqing/ClionProjects/stock_simulation/marketOrderGenerator.cpp
+marketOrderGenerator.h
+/Users/huyiqing/ClionProjects/stock_simulation/marketOrderGenerator.h
+
+/Users/huyiqing/ClionProjects/stock_simulation/marketOrderGenerator.h
+
+/Users/huyiqing/ClionProjects/stock_simulation/orderProcessor.cpp
+orderProcessor.h
+/Users/huyiqing/ClionProjects/stock_simulation/orderProcessor.h
+
+/Users/huyiqing/ClionProjects/stock_simulation/orderProcessor.h
+
+/Users/huyiqing/ClionProjects/stock_simulation/random_demo.cpp
+stdlib.h
+-
+stdio.h
+-
+math.h
+-
+time.h
+-
+
