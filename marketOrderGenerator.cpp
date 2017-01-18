@@ -7,9 +7,17 @@
 
 
 
-marketOrderGenerator::marketOrderGenerator()
+marketOrderGenerator::marketOrderGenerator(int n)
 {
-
+    buyOrder.clear();
+    sellOrder.clear();
+    for (int i = 0; i < n; i++)
+    {
+        map<int, unsigned int> m1;
+        map<int, unsigned int> m2;
+        buyOrder.push_back(m1);
+        sellOrder.push_back(m2);
+    }
 }
 
 marketOrderGenerator::~marketOrderGenerator()
@@ -17,19 +25,34 @@ marketOrderGenerator::~marketOrderGenerator()
 
 }
 
-vector<int*> marketOrderGenerator::generateOrder(vector<int*>& a)
+const vector<map<int, unsigned int>>& marketOrderGenerator::generateBuyOrder()
 {
-
-    for (int j = 0; j <= sizeof(a.at(0)) / sizeof(int) / 2; j++)
+    for (int i = 0; i < buyOrder.size(); i++)
     {
-        a.at(0)[j] = j + 1;
-    }
-    for (int j = sizeof(a.at(0)) / sizeof(int) / 2 + 1; j <= sizeof(a.at(0)) / sizeof(int); j++)
-    {
-        a.at(0)[j] = 15 - j;
+        buyOrder[i].clear();
+        buyOrder[i][4000] = 2;
+        buyOrder[i][4700] = 7;
+        buyOrder[i][5000] = 6;
+        buyOrder[i][5100] = 10;
+        buyOrder[i][5200] = 1;
     }
 
-    return a;
+    return buyOrder;
+}
+
+const vector<map<int, unsigned int>>& marketOrderGenerator::generateSellOrder()
+{
+    for (int i = 0; i < sellOrder.size(); i++)
+    {
+        sellOrder[i].clear();
+        sellOrder[i][5000] = 3;
+        sellOrder[i][5090] = 6;
+        sellOrder[i][5100] = 9;
+        sellOrder[i][5300] = 5;
+        sellOrder[i][5400] = 1;
+    }
+
+    return sellOrder;
 }
 
 void marketOrderGenerator::generateRandomTable()

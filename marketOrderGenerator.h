@@ -6,21 +6,27 @@
 #define STOCK_SIMULATION_MARKETORDERGENERATOR_H
 
 #include <vector>
+#include <map>
 
 using namespace std;
 
+// 传入参数，传出订单
 class marketOrderGenerator
 {
 public:
-    marketOrderGenerator();           //构造函数
+    marketOrderGenerator(int n);           //构造函数
     ~marketOrderGenerator();          //析构函数
 
     void generateRandomTable();       //生成随机数表
-    vector<int*> generateOrder(vector<int*>& a);             //下单
+    const vector<map<int, unsigned int>>& generateBuyOrder();             //买单
+    const vector<map<int, unsigned int>>& generateSellOrder();            //卖单
 
 
 private:
     float offset;
+    float alpha;
+    vector<map<int, unsigned int>> buyOrder;
+    vector<map<int, unsigned int>> sellOrder;
 };
 
 
