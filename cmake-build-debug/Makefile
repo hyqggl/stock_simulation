@@ -231,6 +231,33 @@ orderProcessor.cpp.s:
 	$(MAKE) -f CMakeFiles/stock_simulation.dir/build.make CMakeFiles/stock_simulation.dir/orderProcessor.cpp.s
 .PHONY : orderProcessor.cpp.s
 
+tradeRecord.o: tradeRecord.cpp.o
+
+.PHONY : tradeRecord.o
+
+# target to build an object file
+tradeRecord.cpp.o:
+	$(MAKE) -f CMakeFiles/stock_simulation.dir/build.make CMakeFiles/stock_simulation.dir/tradeRecord.cpp.o
+.PHONY : tradeRecord.cpp.o
+
+tradeRecord.i: tradeRecord.cpp.i
+
+.PHONY : tradeRecord.i
+
+# target to preprocess a source file
+tradeRecord.cpp.i:
+	$(MAKE) -f CMakeFiles/stock_simulation.dir/build.make CMakeFiles/stock_simulation.dir/tradeRecord.cpp.i
+.PHONY : tradeRecord.cpp.i
+
+tradeRecord.s: tradeRecord.cpp.s
+
+.PHONY : tradeRecord.s
+
+# target to generate assembly for a file
+tradeRecord.cpp.s:
+	$(MAKE) -f CMakeFiles/stock_simulation.dir/build.make CMakeFiles/stock_simulation.dir/tradeRecord.cpp.s
+.PHONY : tradeRecord.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -252,6 +279,9 @@ help:
 	@echo "... orderProcessor.o"
 	@echo "... orderProcessor.i"
 	@echo "... orderProcessor.s"
+	@echo "... tradeRecord.o"
+	@echo "... tradeRecord.i"
+	@echo "... tradeRecord.s"
 .PHONY : help
 
 

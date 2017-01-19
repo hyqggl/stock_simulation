@@ -101,6 +101,12 @@
 		<Unit filename="/Users/huyiqing/ClionProjects/stock_simulation/orderProcessor.h">
 			<Option target="stock_simulation"/>
 		</Unit>
+		<Unit filename="/Users/huyiqing/ClionProjects/stock_simulation/tradeRecord.cpp">
+			<Option target="stock_simulation"/>
+		</Unit>
+		<Unit filename="/Users/huyiqing/ClionProjects/stock_simulation/tradeRecord.h">
+			<Option target="stock_simulation"/>
+		</Unit>
 		<Unit filename="/Users/huyiqing/ClionProjects/stock_simulation/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
 		</Unit>

@@ -8,6 +8,7 @@ set(CMAKE_DEPENDS_CHECK_CXX
   "/Users/huyiqing/ClionProjects/stock_simulation/market.cpp" "/Users/huyiqing/ClionProjects/stock_simulation/cmake-build-debug/CMakeFiles/stock_simulation.dir/market.cpp.o"
   "/Users/huyiqing/ClionProjects/stock_simulation/marketOrderGenerator.cpp" "/Users/huyiqing/ClionProjects/stock_simulation/cmake-build-debug/CMakeFiles/stock_simulation.dir/marketOrderGenerator.cpp.o"
   "/Users/huyiqing/ClionProjects/stock_simulation/orderProcessor.cpp" "/Users/huyiqing/ClionProjects/stock_simulation/cmake-build-debug/CMakeFiles/stock_simulation.dir/orderProcessor.cpp.o"
+  "/Users/huyiqing/ClionProjects/stock_simulation/tradeRecord.cpp" "/Users/huyiqing/ClionProjects/stock_simulation/cmake-build-debug/CMakeFiles/stock_simulation.dir/tradeRecord.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "AppleClang")
 

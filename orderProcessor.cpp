@@ -17,6 +17,7 @@ orderProcessor::orderProcessor(int n, vector<int>& priceC)
     for (int i = 0; i < n; i++)
     {
         map<int, unsigned int> m1;
+        m1[0] = 0; //Dummy head, getPriceNRecord2
         map<int, unsigned int> m2;
         undoBuyOrder.push_back(m1);
         undoSellOrder.push_back(m2);
@@ -56,6 +57,61 @@ void orderProcessor::addSellOrder(marketOrderGenerator &mog)
     }
 }
 
+const vector<int>& orderProcessor::getPriceNRecord2()
+{
+
+    for (int i = 0; i < stockNumber; i++)
+    {
+        map<int, unsigned int>& sellM = undoSellOrder[i];
+        map<int, unsigned int>& buyM = undoBuyOrder[i];
+        if (sellM.size() == 0 || buyM.size() == 1)
+        {
+            continue;
+        }
+        map<int, unsigned int>::iterator iterSell;
+        map<int, unsigned int>::iterator iterBuy;
+        iterSell = sellM.begin();
+        iterBuy = buyM.end();
+        iterBuy--;
+        if (iterSell->first > iterBuy->first)
+        {
+            continue;
+        }
+        int price = 0;
+        while (iterSell != sellM.end()
+               && iterSell->first
+                  <= iterBuy->first)
+        {
+            price = iterSell->first;
+            while (iterSell->first <= iterBuy->first
+                   && iterBuy->first != 0
+                   && iterSell->second >= iterBuy->second)
+            {
+                iterSell->second -= iterBuy->second;
+                //record.addRecord(i, 0, iterSell->first, rIterBuy->second);
+                buyM.erase(iterBuy--);
+            }
+
+            if (iterBuy->first == 0
+                || iterSell->first > iterBuy->first)
+            {
+                if (iterSell->second <= 0)
+                {
+                    sellM.erase(iterSell);
+                }
+                break;
+            }
+            //iterSell.second < rIterBuy.second
+            //record.addRecord(i, 0, iterSell->first, iterSell->second);
+            iterBuy->second -= iterSell->second;
+            sellM.erase(iterSell++); //todo
+        }
+        priceCache[i] = price;
+    }
+
+    return priceCache;
+}
+
 const vector<int>& orderProcessor::getPrice()
 {
 
@@ -78,7 +134,6 @@ const vector<int>& orderProcessor::getPrice()
         int temp = 0;
         int price = 0;
         while (iterSell != sellM.end()
-                && rIterBuy != buyM.rend()
                 && iterSell->first <= rIterBuy->first)
         {
             price = iterSell->first;
@@ -88,12 +143,16 @@ const vector<int>& orderProcessor::getPrice()
                     && temp >= rIterBuy->second)
             {
                 temp -= rIterBuy->second;
-                iterSell->second -= rIterBuy->second;
-                //todo add
-                rIterBuy++;
-                buyM.erase((iterator)rIterBuy);
+                ++rIterBuy;
             }
-            iterSell++;
+            if (rIterBuy == buyM.rend())
+            {
+                break;
+            }
+            if (iterSell->first <= rIterBuy->first)
+            {
+                iterSell++;
+            }
         }
         priceCache[i] = price;
     }
@@ -101,27 +160,72 @@ const vector<int>& orderProcessor::getPrice()
     return priceCache;
 }
 
-orderProcessor::tradeRecord::tradeRecord(int n)
+const vector<int>& orderProcessor::getPriceNRecord()
 {
-    for (int i = 0; i < n; i++)
+
+    for (int i = 0; i < stockNumber; i++)
     {
-        vector<int> time;
-        record_time.push_back(time);
-        vector<int> price;
-        record_price.push_back(price);
-        vector<unsigned int> number;
-        record_number.push_back(number);
+        map<int, unsigned int>& sellM = undoSellOrder[i];
+        map<int, unsigned int>& buyM = undoBuyOrder[i];
+        if (sellM.size() == 0 || buyM.size() == 0)
+        {
+            continue;
+        }
+        map<int, unsigned int>::iterator         iterSell;
+        map<int, unsigned int>::reverse_iterator rIterBuy;
+        iterSell = sellM.begin();
+        rIterBuy = buyM.rbegin();
+        if (iterSell->first > rIterBuy->first)
+        {
+            continue;
+        }
+        int price = 0;
+        while (iterSell != sellM.end()
+               && iterSell->first
+                  <= rIterBuy->first)
+        {
+            price = iterSell->first;
+            while (iterSell->first <= rIterBuy->first
+                   && rIterBuy != buyM.rend()
+                   && iterSell->second >= rIterBuy->second)
+            {
+                iterSell->second -= rIterBuy->second;
+                //record.addRecord(i, 0, iterSell->first, rIterBuy->second);
+                buyM.erase((++rIterBuy).base());
+            }
+
+            if (rIterBuy == buyM.rend()
+                || iterSell->first > rIterBuy->first)
+            {
+                if (iterSell->second <= 0)
+                {
+                    sellM.erase(iterSell);
+                }
+                break;
+            }
+            //iterSell.second < rIterBuy.second
+            //record.addRecord(i, 0, iterSell->first, iterSell->second);
+            //something goes wrong, test
+            int x = rIterBuy->first;
+            int y = rIterBuy->second;
+            rIterBuy->second -= iterSell->second;
+            x = rIterBuy->first;
+            y = rIterBuy->second;
+            sellM.erase(iterSell++);
+            x = rIterBuy->first;
+            y = rIterBuy->second;
+        }
+        priceCache[i] = price;
     }
+
+    return priceCache;
 }
 
-orderProcessor::tradeRecord::~tradeRecord()
+const vector<map<int, unsigned int>>& orderProcessor::getUndoSellOrder()
 {
-
+    return undoSellOrder;
 }
-
-void orderProcessor::tradeRecord::addRecord(int n, int time, int price, unsigned int number)
+const vector<map<int, unsigned int>>& orderProcessor::getUndoBuyOrder()
 {
-    record_time[n].push_back(time);
-    record_price[n].push_back(price);
-    record_number[n].push_back(number);
+    return undoBuyOrder;
 }

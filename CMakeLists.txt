@@ -10,5 +10,7 @@ set(SOURCE_FILES
         market.cpp
         market.h
         orderProcessor.cpp
-        orderProcessor.h)
+        orderProcessor.h
+        tradeRecord.h
+        tradeRecord.cpp)
 add_executable(stock_simulation ${SOURCE_FILES})

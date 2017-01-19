@@ -16,3 +16,6 @@ CMakeFiles/stock_simulation.dir/orderProcessor.cpp.o: ../marketOrderGenerator.h
 CMakeFiles/stock_simulation.dir/orderProcessor.cpp.o: ../orderProcessor.cpp
 CMakeFiles/stock_simulation.dir/orderProcessor.cpp.o: ../orderProcessor.h
 
+CMakeFiles/stock_simulation.dir/tradeRecord.cpp.o: ../tradeRecord.cpp
+CMakeFiles/stock_simulation.dir/tradeRecord.cpp.o: ../tradeRecord.h
+
