@@ -15,7 +15,9 @@ int main() {
 //    ofstream saveFile("ofsTest1.txt", ios::ate);
 //    saveFile<<"new one!\n";
 //    saveFile.close();
-    int n = 1000;
+    int n = 1;
+    int time = 0;
+    tradeRecord tr(n);
     marketOrderGenerator mog(n);
     vector<int> initialPrices;
     for (int i = 0; i < n; i++)
@@ -26,13 +28,15 @@ int main() {
     op.addBuyOrder(mog);
     op.addSellOrder(mog);
 
-    auto a = op.getPriceNRecord2();
+    auto a = op.getPriceNRecord(++time, tr);
 //    auto a = op.getPrice();
-    for (int i = 0; i < a.size(); i++)
+    for (int i = 0; i < sizeof(a)/ sizeof(int); i++)
     {
         cout<<a[i]<<" ";
     }
     cout<<endl;
+
+
     auto so = op.getUndoSellOrder();
     auto bo = op.getUndoBuyOrder();
     cout<<"Sell"<<endl;
@@ -49,6 +53,27 @@ int main() {
     {
         map<int, unsigned int>::reverse_iterator it;
         for (it = bo[i].rbegin(); it != bo[i].rend(); it++)
+        {
+            cout<<it->first<<" : "<<it->second<<endl;
+        }
+    }
+
+    auto so5 = op.getTopSellFive();
+    auto bo5 = op.getTopBuyFive();
+    cout<<"Sell5"<<endl;
+    for (int i = 0; i < so5.size(); i++)
+    {
+        map<int, unsigned int>::reverse_iterator it;
+        for (it = so5[i].rbegin(); it != so5[i].rend(); it++)
+        {
+            cout<<it->first<<" : "<<it->second<<endl;
+        }
+    }
+    cout<<"Buy5"<<endl;
+    for (int i = 0; i < bo5.size(); i++)
+    {
+        map<int, unsigned int>::reverse_iterator it;
+        for (it = bo5[i].rbegin(); it != bo5[i].rend(); it++)
         {
             cout<<it->first<<" : "<<it->second<<endl;
         }

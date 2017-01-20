@@ -31,6 +31,11 @@ const vector<map<int, unsigned int>>& marketOrderGenerator::generateBuyOrder()
     {
         buyOrder[i].clear();
         buyOrder[i][4000] = 2;
+        buyOrder[i][4100] = 6;
+        buyOrder[i][4400] = 3;
+        buyOrder[i][4500] = 9;
+        buyOrder[i][4580] = 2;
+        buyOrder[i][4620] = 3;
         buyOrder[i][4700] = 7;
         buyOrder[i][5000] = 6;
         buyOrder[i][5100] = 10;
@@ -45,6 +50,12 @@ const vector<map<int, unsigned int>>& marketOrderGenerator::generateSellOrder()
     for (int i = 0; i < sellOrder.size(); i++)
     {
         sellOrder[i].clear();
+        sellOrder[i][4200] = 3;
+        sellOrder[i][4300] = 3;
+        sellOrder[i][4400] = 3;
+        sellOrder[i][4500] = 3;
+        sellOrder[i][4600] = 3;
+        sellOrder[i][4700] = 3;
         sellOrder[i][5000] = 3;
         sellOrder[i][5090] = 6;
         sellOrder[i][5100] = 9;

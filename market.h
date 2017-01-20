@@ -9,6 +9,9 @@
 
 using namespace std;
 
+/**
+ * 用于初始化
+ */
 class market {
 public:
     void getPrices();

@@ -49,6 +49,8 @@ map
 -
 marketOrderGenerator.h
 /Users/huyiqing/ClionProjects/stock_simulation/marketOrderGenerator.h
+tradeRecord.h
+/Users/huyiqing/ClionProjects/stock_simulation/tradeRecord.h
 
 /Users/huyiqing/ClionProjects/stock_simulation/random_demo.cpp
 stdlib.h

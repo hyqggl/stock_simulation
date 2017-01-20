@@ -7,13 +7,16 @@
 
 orderProcessor::orderProcessor(int n, vector<int>& priceC)
 {
+    priceCache = new int[n];
     stockNumber = n;
-    for (int i = 0; i < priceC.size(); i++)
+    for (int i = 0; i < n; i++)
     {
-        priceCache.push_back(priceC[i]);
+        priceCache[i] = priceC[i];
     }
     undoBuyOrder.clear();
     undoSellOrder.clear();
+    topFiveBuyOrderCache.clear();
+    topFiveSellOrderCache.clear();
     for (int i = 0; i < n; i++)
     {
         map<int, unsigned int> m1;
@@ -21,13 +24,18 @@ orderProcessor::orderProcessor(int n, vector<int>& priceC)
         map<int, unsigned int> m2;
         undoBuyOrder.push_back(m1);
         undoSellOrder.push_back(m2);
+        map<int, unsigned int> m3;
+        map<int, unsigned int> m4;
+        topFiveSellOrderCache.push_back(m3);
+        topFiveBuyOrderCache.push_back(m4);
     }
 }
 
 
 orderProcessor::~orderProcessor()
 {
-
+    delete []priceCache;
+    priceCache = NULL;
 }
 
 void orderProcessor::addBuyOrder(marketOrderGenerator &mog)
@@ -57,7 +65,11 @@ void orderProcessor::addSellOrder(marketOrderGenerator &mog)
     }
 }
 
-const vector<int>& orderProcessor::getPriceNRecord2()
+/**
+ * 得到价格，同时改变订单队列
+ * @return
+ */
+const int* orderProcessor::getPriceNRecord(int time, tradeRecord& tr)
 {
 
     for (int i = 0; i < stockNumber; i++)
@@ -88,7 +100,7 @@ const vector<int>& orderProcessor::getPriceNRecord2()
                    && iterSell->second >= iterBuy->second)
             {
                 iterSell->second -= iterBuy->second;
-                //record.addRecord(i, 0, iterSell->first, rIterBuy->second);
+                tr.addRecord(i, time, iterSell->first, iterBuy->second); //todo record
                 buyM.erase(iterBuy--);
             }
 
@@ -102,9 +114,9 @@ const vector<int>& orderProcessor::getPriceNRecord2()
                 break;
             }
             //iterSell.second < rIterBuy.second
-            //record.addRecord(i, 0, iterSell->first, iterSell->second);
+            tr.addRecord(i, time, iterSell->first, iterSell->second); //todo record
             iterBuy->second -= iterSell->second;
-            sellM.erase(iterSell++); //todo
+            sellM.erase(iterSell++);
         }
         priceCache[i] = price;
     }
@@ -112,7 +124,12 @@ const vector<int>& orderProcessor::getPriceNRecord2()
     return priceCache;
 }
 
-const vector<int>& orderProcessor::getPrice()
+/**
+ * 只得到价格
+ * 不改变订单队列
+ * @return
+ */
+const int* orderProcessor::getPrice()
 {
 
     for (int i = 0; i < stockNumber; i++)
@@ -160,7 +177,11 @@ const vector<int>& orderProcessor::getPrice()
     return priceCache;
 }
 
-const vector<int>& orderProcessor::getPriceNRecord()
+/**
+ * 废弃，只用作测试
+ * @return
+ */
+const int* orderProcessor::getPriceNRecord2()
 {
 
     for (int i = 0; i < stockNumber; i++)
@@ -228,4 +249,67 @@ const vector<map<int, unsigned int>>& orderProcessor::getUndoSellOrder()
 const vector<map<int, unsigned int>>& orderProcessor::getUndoBuyOrder()
 {
     return undoBuyOrder;
+}
+
+const map<int, unsigned int>& orderProcessor::getUndoSellOrder(int n)
+{
+    return undoSellOrder[n];
+}
+const map<int, unsigned int>& orderProcessor::getUndoBuyOrder(int n)
+{
+    return undoBuyOrder[n];
+}
+
+const vector<map<int, unsigned int>>& orderProcessor::getTopSellFive()
+{
+    for (int i = 0; i < stockNumber; i++)
+    {
+        topFiveSellOrderCache[i].clear();
+        map<int, unsigned int>::iterator it;
+        for (it = undoSellOrder[i].begin(); it != undoSellOrder[i].end()
+                                            && topFiveSellOrderCache[i].size() < 5; it++)
+        {
+            topFiveSellOrderCache[i][it->first] = it->second;
+        }
+    }
+    return topFiveSellOrderCache;
+}
+
+const vector<map<int, unsigned int>>& orderProcessor::getTopBuyFive()
+{
+    for (int i = 0; i < stockNumber; i++)
+    {
+        topFiveBuyOrderCache[i].clear();
+        map<int, unsigned int>::iterator it;
+        it = undoBuyOrder[i].end();
+        for (it--; it->first != 0 && topFiveBuyOrderCache[i].size() < 5; it--)
+        {
+            topFiveBuyOrderCache[i][it->first] = it->second;
+        }
+    }
+    return topFiveBuyOrderCache;
+}
+
+const map<int, unsigned int>& orderProcessor::getTopSellFive(int n)
+{
+    topFiveSellOrderCache[n].clear();
+    map<int, unsigned int>::iterator it;
+    for (it = undoSellOrder[n].begin(); it != undoSellOrder[n].end()
+                                        && topFiveSellOrderCache[n].size() < 5; it++)
+    {
+        topFiveSellOrderCache[n][it->first] = it->second;
+    }
+    return topFiveSellOrderCache[n];
+}
+
+const map<int, unsigned int>& orderProcessor::getTopBuyFive(int n)
+{
+    topFiveBuyOrderCache[n].clear();
+    map<int, unsigned int>::iterator it;
+    it = undoBuyOrder[n].end();
+    for (it--; it->first != 0 && topFiveBuyOrderCache[n].size() < 5; it--)
+    {
+        topFiveBuyOrderCache[n][it->first] = it->second;
+    }
+    return topFiveBuyOrderCache[n];
 }
