@@ -95,6 +95,9 @@
 		<Unit filename="/Users/huyiqing/ClionProjects/stock_simulation/marketOrderGenerator.h">
 			<Option target="stock_simulation"/>
 		</Unit>
+		<Unit filename="/Users/huyiqing/ClionProjects/stock_simulation/order.h">
+			<Option target="stock_simulation"/>
+		</Unit>
 		<Unit filename="/Users/huyiqing/ClionProjects/stock_simulation/orderProcessor.cpp">
 			<Option target="stock_simulation"/>
 		</Unit>

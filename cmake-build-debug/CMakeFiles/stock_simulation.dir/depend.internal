@@ -4,6 +4,7 @@
 CMakeFiles/stock_simulation.dir/main.cpp.o
  /Users/huyiqing/ClionProjects/stock_simulation/main.cpp
  /Users/huyiqing/ClionProjects/stock_simulation/marketOrderGenerator.h
+ /Users/huyiqing/ClionProjects/stock_simulation/order.h
  /Users/huyiqing/ClionProjects/stock_simulation/orderProcessor.h
  /Users/huyiqing/ClionProjects/stock_simulation/random_demo.cpp
  /Users/huyiqing/ClionProjects/stock_simulation/tradeRecord.h
@@ -15,6 +16,7 @@ CMakeFiles/stock_simulation.dir/marketOrderGenerator.cpp.o
  /Users/huyiqing/ClionProjects/stock_simulation/marketOrderGenerator.h
 CMakeFiles/stock_simulation.dir/orderProcessor.cpp.o
  /Users/huyiqing/ClionProjects/stock_simulation/marketOrderGenerator.h
+ /Users/huyiqing/ClionProjects/stock_simulation/order.h
  /Users/huyiqing/ClionProjects/stock_simulation/orderProcessor.cpp
  /Users/huyiqing/ClionProjects/stock_simulation/orderProcessor.h
  /Users/huyiqing/ClionProjects/stock_simulation/tradeRecord.h

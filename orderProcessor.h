@@ -9,6 +9,7 @@
 #include <map>
 #include "marketOrderGenerator.h"
 #include "tradeRecord.h"
+#include "order.h"
 
 using namespace std;
 
@@ -23,21 +24,21 @@ public:
     const int*        getPrice();
     const int* getPriceNRecord(int time, tradeRecord& tr);
     const int* getPriceNRecord2();
-    const vector<map<int, unsigned int>>& getUndoBuyOrder();
-    const vector<map<int, unsigned int>>& getUndoSellOrder();
+    const vector<map<int, unsigned int>>& getUndoBuyOrder();  //todo 换掉vector
+    const vector<map<int, unsigned int>>& getUndoSellOrder(); //todo 换掉vector
     const map<int, unsigned int>& getUndoBuyOrder(int n);
     const map<int, unsigned int>& getUndoSellOrder(int n);
-    const vector<map<int, unsigned int>>& getTopBuyFive();
-    const vector<map<int, unsigned int>>& getTopSellFive();
-    const map<int, unsigned int>& getTopBuyFive(int n);
-    const map<int, unsigned int>& getTopSellFive(int n);
+    Order** getTopBuyFive();
+    Order** getTopSellFive();
+    Order* getTopBuyFive(int n);
+    Order* getTopSellFive(int n);
 private:
-    int        stockNumber;
+    int stockNumber;
     int* priceCache;
     vector<map<int, unsigned int>>  undoBuyOrder;
     vector<map<int, unsigned int>> undoSellOrder;
-    vector<map<int, unsigned int>>  topFiveBuyOrderCache;
-    vector<map<int, unsigned int>> topFiveSellOrderCache;
+    Order**  topFiveBuyOrderCache;
+    Order** topFiveSellOrderCache;
 };
 
 

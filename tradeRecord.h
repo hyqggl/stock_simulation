@@ -5,18 +5,26 @@
 #ifndef STOCK_SIMULATION_TRADERECORD_H
 #define STOCK_SIMULATION_TRADERECORD_H
 
-#include <vector>
+#include <stddef.h>
+#include <fstream>
+#include <string>
+
 using namespace std;
 
 class tradeRecord {
 public:
-    tradeRecord(int n);
+    tradeRecord(int n, int capacity);
     ~tradeRecord();
     void addRecord(int n, int time, int price, unsigned int number);
+    void writeOut(int n);
 private:
-    vector<vector<int>>            record_time;
-    vector<vector<int>>           record_price;
-    vector<vector<unsigned int>> record_number;
+    int                  sNumber;
+    int*                 counter;  //计数器，记录当前记录条数
+    int                 capacity;
+    int**            record_time;
+    int**           record_price;
+    unsigned int** record_number;
+    string                direct;
 };
 
 

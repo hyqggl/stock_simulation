@@ -38,6 +38,8 @@ vector
 map
 -
 
+/Users/huyiqing/ClionProjects/stock_simulation/order.h
+
 /Users/huyiqing/ClionProjects/stock_simulation/orderProcessor.cpp
 orderProcessor.h
 /Users/huyiqing/ClionProjects/stock_simulation/orderProcessor.h
@@ -51,6 +53,8 @@ marketOrderGenerator.h
 /Users/huyiqing/ClionProjects/stock_simulation/marketOrderGenerator.h
 tradeRecord.h
 /Users/huyiqing/ClionProjects/stock_simulation/tradeRecord.h
+order.h
+/Users/huyiqing/ClionProjects/stock_simulation/order.h
 
 /Users/huyiqing/ClionProjects/stock_simulation/random_demo.cpp
 stdlib.h
@@ -67,6 +71,10 @@ tradeRecord.h
 /Users/huyiqing/ClionProjects/stock_simulation/tradeRecord.h
 
 /Users/huyiqing/ClionProjects/stock_simulation/tradeRecord.h
-vector
+stddef.h
+-
+fstream
+-
+string
 -
 
