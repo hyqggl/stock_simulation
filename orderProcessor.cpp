@@ -5,25 +5,18 @@
 #include "orderProcessor.h"
 
 
-orderProcessor::orderProcessor(int n, vector<int>& priceC)
+orderProcessor::orderProcessor(int n):stockNumber(n)
 {
-    priceCache = new int[n];
-    stockNumber = n;
-    for (int i = 0; i < n; i++)
+    priceCache = new int[stockNumber];
+    volumeCache = new int[stockNumber];
+    volumeFlowCache = new long[stockNumber];
+    undoBuyOrder = new map<int, unsigned int>[stockNumber];
+    undoSellOrder = new map<int, unsigned int>[stockNumber];
+    topFiveBuyOrderCache = new Order*[stockNumber];
+    topFiveSellOrderCache = new Order*[stockNumber];
+    for (int i = 0; i < stockNumber; i++)
     {
-        priceCache[i] = priceC[i];
-    }
-    undoBuyOrder.clear();
-    undoSellOrder.clear();
-    topFiveBuyOrderCache = new Order*[n];
-    topFiveSellOrderCache = new Order*[n];
-    for (int i = 0; i < n; i++)
-    {
-        map<int, unsigned int> m1;
-        m1[0] = 0; //Dummy head, getPriceNRecord2
-        map<int, unsigned int> m2;
-        undoBuyOrder.push_back(m1);
-        undoSellOrder.push_back(m2);
+        undoBuyOrder[i][0] = 0; //Dummy head, getPriceNRecord2
         topFiveSellOrderCache[i] = new Order[5];
         topFiveBuyOrderCache[i] = new Order[5];
     }
@@ -32,7 +25,11 @@ orderProcessor::orderProcessor(int n, vector<int>& priceC)
 
 orderProcessor::~orderProcessor()
 {
+    delete []undoBuyOrder;
+    delete []undoSellOrder;
     delete []priceCache;
+    delete []volumeCache;
+    delete []volumeFlowCache;
     priceCache = NULL;
     for (int i = 0; i < stockNumber; i++)
     {
@@ -48,12 +45,20 @@ orderProcessor::~orderProcessor()
     topFiveBuyOrderCache = NULL;
 }
 
+void orderProcessor::setOpenPrice(int* price0)
+{
+    for (int i = 0; i < stockNumber; i++)
+    {
+        priceCache[i] = price0[i];
+    }
+}
+
 void orderProcessor::addBuyOrder(marketOrderGenerator &mog)
 {
     auto temp = mog.generateBuyOrder();
-    for (int i = 0; i < temp.size(); i++)
+    for (int i = 0; i < stockNumber; i++)
     {
-        map<int, unsigned int>::iterator iter;
+        map<int, unsigned int>::const_iterator iter;
         for (iter = temp[i].begin(); iter != temp[i].end(); iter++)
         {
             undoBuyOrder[i][iter->first] += iter->second;
@@ -65,9 +70,9 @@ void orderProcessor::addSellOrder(marketOrderGenerator &mog)
 {
     mog.generateSellOrder();
     auto temp = mog.generateSellOrder();
-    for (int i = 0; i < temp.size(); i++)
+    for (int i = 0; i < stockNumber; i++)
     {
-        map<int, unsigned int>::iterator iter;
+        map<int, unsigned int>::const_iterator iter;
         for (iter = temp[i].begin(); iter != temp[i].end(); iter++)
         {
             undoSellOrder[i][iter->first] += iter->second;
@@ -79,11 +84,13 @@ void orderProcessor::addSellOrder(marketOrderGenerator &mog)
  * 得到价格，同时改变订单队列
  * @return
  */
-const int* orderProcessor::getPriceNRecord(int time, tradeRecord& tr)
+const int* orderProcessor::getPriceNRecord(int time, tradeRecord& tr, bool usingRecord)
 {
 
     for (int i = 0; i < stockNumber; i++)
     {
+        volumeCache[i] = 0;
+        volumeFlowCache[i] = 0;
         map<int, unsigned int>& sellM = undoSellOrder[i];
         map<int, unsigned int>& buyM = undoBuyOrder[i];
         if (sellM.size() == 0 || buyM.size() == 1)
@@ -110,7 +117,11 @@ const int* orderProcessor::getPriceNRecord(int time, tradeRecord& tr)
                    && iterSell->second >= iterBuy->second)
             {
                 iterSell->second -= iterBuy->second;
-                tr.addRecord(i, time, iterSell->first, iterBuy->second); //todo record
+                volumeCache[i] += iterBuy->second;
+                volumeFlowCache[i] += iterSell->first * iterBuy->second;
+                if (usingRecord) {
+                    tr.addRecord(i, time, iterSell->first, iterBuy->second);
+                } //todo record
                 buyM.erase(iterBuy--);
             }
 
@@ -124,7 +135,11 @@ const int* orderProcessor::getPriceNRecord(int time, tradeRecord& tr)
                 break;
             }
             //iterSell.second < rIterBuy.second
-            tr.addRecord(i, time, iterSell->first, iterSell->second); //todo record
+            if (usingRecord) {
+                tr.addRecord(i, time, iterSell->first, iterSell->second);
+            } //todo record
+            volumeCache[i] += iterSell->second;
+            volumeFlowCache[i] += iterSell->first * iterSell->second;
             iterBuy->second -= iterSell->second;
             sellM.erase(iterSell++);
         }
@@ -252,11 +267,11 @@ const int* orderProcessor::getPriceNRecord2()
     return priceCache;
 }
 
-const vector<map<int, unsigned int>>& orderProcessor::getUndoSellOrder()
+const map<int, unsigned int>* orderProcessor::getUndoSellOrder()
 {
     return undoSellOrder;
 }
-const vector<map<int, unsigned int>>& orderProcessor::getUndoBuyOrder()
+const map<int, unsigned int>* orderProcessor::getUndoBuyOrder()
 {
     return undoBuyOrder;
 }
@@ -350,4 +365,14 @@ Order* orderProcessor::getTopBuyFive(int n)
         counter++;
     }
     return topFiveBuyOrderCache[n];
+}
+
+const int* orderProcessor::getVolume()
+{
+    return volumeCache;
+}
+
+const long* orderProcessor::getVolumeFlow()
+{
+    return volumeFlowCache;
 }

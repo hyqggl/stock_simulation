@@ -25,8 +25,10 @@ market.h
 /Users/huyiqing/ClionProjects/stock_simulation/market.h
 
 /Users/huyiqing/ClionProjects/stock_simulation/market.h
-vector
+stddef.h
 -
+orderProcessor.h
+/Users/huyiqing/ClionProjects/stock_simulation/orderProcessor.h
 
 /Users/huyiqing/ClionProjects/stock_simulation/marketOrderGenerator.cpp
 marketOrderGenerator.h
@@ -45,8 +47,6 @@ orderProcessor.h
 /Users/huyiqing/ClionProjects/stock_simulation/orderProcessor.h
 
 /Users/huyiqing/ClionProjects/stock_simulation/orderProcessor.h
-vector
--
 map
 -
 marketOrderGenerator.h

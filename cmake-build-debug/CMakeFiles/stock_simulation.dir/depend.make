@@ -10,6 +10,10 @@ CMakeFiles/stock_simulation.dir/main.cpp.o: ../tradeRecord.h
 
 CMakeFiles/stock_simulation.dir/market.cpp.o: ../market.cpp
 CMakeFiles/stock_simulation.dir/market.cpp.o: ../market.h
+CMakeFiles/stock_simulation.dir/market.cpp.o: ../marketOrderGenerator.h
+CMakeFiles/stock_simulation.dir/market.cpp.o: ../order.h
+CMakeFiles/stock_simulation.dir/market.cpp.o: ../orderProcessor.h
+CMakeFiles/stock_simulation.dir/market.cpp.o: ../tradeRecord.h
 
 CMakeFiles/stock_simulation.dir/marketOrderGenerator.cpp.o: ../marketOrderGenerator.cpp
 CMakeFiles/stock_simulation.dir/marketOrderGenerator.cpp.o: ../marketOrderGenerator.h

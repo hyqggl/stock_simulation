@@ -18,13 +18,13 @@ public:
     void addRecord(int n, int time, int price, unsigned int number);
     void writeOut(int n);
 private:
-    int                  sNumber;
-    int*                 counter;  //计数器，记录当前记录条数
-    int                 capacity;
+    int                  sNumber;  //股票数
+    int*                 counter;  //计数器，记录每只股票当前记录条数
+    int                 capacity;  //最大记录容量
     int**            record_time;
     int**           record_price;
     unsigned int** record_number;
-    string                direct;
+    string                direct;  //记录存储地址
 };
 
 

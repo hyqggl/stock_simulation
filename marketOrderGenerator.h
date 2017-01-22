@@ -14,19 +14,18 @@ using namespace std;
 class marketOrderGenerator
 {
 public:
-    marketOrderGenerator(int n);           //构造函数
-    ~marketOrderGenerator();          //析构函数
+    marketOrderGenerator(int n);
+    ~marketOrderGenerator();
 
-    void generateRandomTable();       //生成随机数表
-    const vector<map<int, unsigned int>>& generateBuyOrder();             //买单
-    const vector<map<int, unsigned int>>& generateSellOrder();            //卖单
-
-
+    const map<int, unsigned int>* generateBuyOrder();             //买单
+    const map<int, unsigned int>* generateSellOrder();            //卖单
+    void generateRandomTable();
 private:
+    const int stockNumber;
     float offset;
     float alpha;
-    vector<map<int, unsigned int>> buyOrder;
-    vector<map<int, unsigned int>> sellOrder;
+    map<int, unsigned int>* buyOrder;
+    map<int, unsigned int>* sellOrder;
 };
 
 

@@ -19,39 +19,39 @@ int main() {
     int time = 0;
     tradeRecord tr(n, 5);
     marketOrderGenerator mog(n);
-    vector<int> initialPrices;
+    int initialPrices[n];
     for (int i = 0; i < n; i++)
     {
-        initialPrices.push_back(4800);
+        initialPrices[i] = 4800;
     }
-    orderProcessor op(n, initialPrices);
+    orderProcessor op(n);
+    op.setOpenPrice(initialPrices);
     op.addBuyOrder(mog);
     op.addSellOrder(mog);
 
-    const int* a = op.getPriceNRecord(++time, tr);
-//    auto a = op.getPrice();
-    for (int i = 0; i < sizeof(*a)/ sizeof(int); i++)
+    const int* a = op.getPriceNRecord(++time, tr, false);
+    for (int i = 0; i < n; i++)
     {
         cout<<a[i]<<" ";
     }
     cout<<endl;
 
 
-    auto so = op.getUndoSellOrder();
-    auto bo = op.getUndoBuyOrder();
+    const map<int, unsigned int>* so = op.getUndoSellOrder();
+    const map<int, unsigned int>* bo = op.getUndoBuyOrder();
     cout<<"Sell"<<endl;
-    for (int i = 0; i < so.size(); i++)
+    for (int i = 0; i < n; i++)
     {
-        map<int, unsigned int>::reverse_iterator it;
+        map<int, unsigned int>::const_reverse_iterator it;
         for (it = so[i].rbegin(); it != so[i].rend(); it++)
         {
             cout<<it->first<<" : "<<it->second<<endl;
         }
     }
     cout<<"Buy"<<endl;
-    for (int i = 0; i < bo.size(); i++)
+    for (int i = 0; i < n; i++)
     {
-        map<int, unsigned int>::reverse_iterator it;
+        map<int, unsigned int>::const_reverse_iterator it;
         for (it = bo[i].rbegin(); it != bo[i].rend(); it++)
         {
             cout<<it->first<<" : "<<it->second<<endl;
