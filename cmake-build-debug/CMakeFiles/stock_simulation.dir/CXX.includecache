@@ -13,6 +13,8 @@ random_demo.cpp
 /Users/huyiqing/ClionProjects/stock_simulation/random_demo.cpp
 orderProcessor.h
 /Users/huyiqing/ClionProjects/stock_simulation/orderProcessor.h
+market.h
+/Users/huyiqing/ClionProjects/stock_simulation/market.h
 fstream
 -
 vector
@@ -29,6 +31,10 @@ stddef.h
 -
 orderProcessor.h
 /Users/huyiqing/ClionProjects/stock_simulation/orderProcessor.h
+iostream
+-
+iomanip
+-
 
 /Users/huyiqing/ClionProjects/stock_simulation/marketOrderGenerator.cpp
 marketOrderGenerator.h
@@ -67,6 +73,10 @@ time.h
 -
 
 /Users/huyiqing/ClionProjects/stock_simulation/tradeRecord.cpp
+sstream
+-
+iostream
+-
 tradeRecord.h
 /Users/huyiqing/ClionProjects/stock_simulation/tradeRecord.h
 

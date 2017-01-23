@@ -28,8 +28,8 @@ public:
     void addBuyOrder (marketOrderGenerator &mog);   //把生成的买单加到未处理队列
     void addSellOrder(marketOrderGenerator &mog);   //把生成的卖单加到未处理队列
     void shake();        //todo 抖动未处理订单，模拟订单撤回
-    const int*        getPrice();   //单得到价格，不处理
-    const int* getPriceNRecord(int time, tradeRecord& tr, bool usingRecord); //处理订单，得到价格，并记录
+    const int*        getPriceWithoutMove();   //单得到价格，不处理
+    const int* getPriceNRecord(int date, int timeUnitNow, tradeRecord* tr = nullptr, bool usingRecord = false); //处理订单，得到价格，并记录
     const int* getPriceNRecord2();  //测试用
     const map<int, unsigned int>* getUndoBuyOrder();    //得到未处理买单队列
     const map<int, unsigned int>* getUndoSellOrder();   //得到未处理卖单队列
@@ -39,8 +39,12 @@ public:
     Order** getTopSellFive();       //得到卖五
     Order* getTopBuyFive(int n);
     Order* getTopSellFive(int n);
+    const int*  getPrices();
+    const int   getPrices(int n);
     const int*  getVolume();
+    const int   getVolume(int n);
     const long* getVolumeFlow();
+    const long  getVolumeFlow(int n);
 private:
     const int stockNumber;
     int* priceCache;      //每轮价格

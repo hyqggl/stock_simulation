@@ -50,6 +50,8 @@ void orderProcessor::setOpenPrice(int* price0)
     for (int i = 0; i < stockNumber; i++)
     {
         priceCache[i] = price0[i];
+        volumeCache[i] = 0;
+        volumeFlowCache[i] = 0;
     }
 }
 
@@ -84,7 +86,7 @@ void orderProcessor::addSellOrder(marketOrderGenerator &mog)
  * 得到价格，同时改变订单队列
  * @return
  */
-const int* orderProcessor::getPriceNRecord(int time, tradeRecord& tr, bool usingRecord)
+const int* orderProcessor::getPriceNRecord(int date, int timeUnitNow, tradeRecord* tr, bool usingRecord)
 {
 
     for (int i = 0; i < stockNumber; i++)
@@ -120,7 +122,7 @@ const int* orderProcessor::getPriceNRecord(int time, tradeRecord& tr, bool using
                 volumeCache[i] += iterBuy->second;
                 volumeFlowCache[i] += iterSell->first * iterBuy->second;
                 if (usingRecord) {
-                    tr.addRecord(i, time, iterSell->first, iterBuy->second);
+                    tr->addRecord(i, date, timeUnitNow, iterSell->first, iterBuy->second);
                 } //todo record
                 buyM.erase(iterBuy--);
             }
@@ -136,7 +138,7 @@ const int* orderProcessor::getPriceNRecord(int time, tradeRecord& tr, bool using
             }
             //iterSell.second < rIterBuy.second
             if (usingRecord) {
-                tr.addRecord(i, time, iterSell->first, iterSell->second);
+                tr->addRecord(i, date, timeUnitNow, iterSell->first, iterSell->second);
             } //todo record
             volumeCache[i] += iterSell->second;
             volumeFlowCache[i] += iterSell->first * iterSell->second;
@@ -154,7 +156,7 @@ const int* orderProcessor::getPriceNRecord(int time, tradeRecord& tr, bool using
  * 不改变订单队列
  * @return
  */
-const int* orderProcessor::getPrice()
+const int* orderProcessor::getPriceWithoutMove()
 {
 
     for (int i = 0; i < stockNumber; i++)
@@ -367,12 +369,32 @@ Order* orderProcessor::getTopBuyFive(int n)
     return topFiveBuyOrderCache[n];
 }
 
+const int* orderProcessor::getPrices()
+{
+    return priceCache;
+}
+
+const int  orderProcessor::getPrices(int n)
+{
+    return priceCache[n];
+}
+
 const int* orderProcessor::getVolume()
 {
     return volumeCache;
 }
 
+const int  orderProcessor::getVolume(int n)
+{
+    return volumeCache[n];
+}
+
 const long* orderProcessor::getVolumeFlow()
 {
     return volumeFlowCache;
+}
+
+const long orderProcessor::getVolumeFlow(int n)
+{
+    return volumeFlowCache[n];
 }

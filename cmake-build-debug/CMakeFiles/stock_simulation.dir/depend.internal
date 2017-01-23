@@ -3,6 +3,7 @@
 
 CMakeFiles/stock_simulation.dir/main.cpp.o
  /Users/huyiqing/ClionProjects/stock_simulation/main.cpp
+ /Users/huyiqing/ClionProjects/stock_simulation/market.h
  /Users/huyiqing/ClionProjects/stock_simulation/marketOrderGenerator.h
  /Users/huyiqing/ClionProjects/stock_simulation/order.h
  /Users/huyiqing/ClionProjects/stock_simulation/orderProcessor.h

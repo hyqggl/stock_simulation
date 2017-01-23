@@ -9,7 +9,6 @@
 
 marketOrderGenerator::marketOrderGenerator(int n):stockNumber(n)
 {
-    //todo
     buyOrder = new map<int, unsigned int>[n];
     sellOrder = new map<int, unsigned int>[n];
 }
