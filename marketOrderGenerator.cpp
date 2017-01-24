@@ -61,3 +61,8 @@ const map<int, unsigned int>* marketOrderGenerator::generateSellOrder()
 
     return sellOrder;
 }
+
+void marketOrderGenerator::generateRandomTable()
+{
+
+}

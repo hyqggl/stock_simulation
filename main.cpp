@@ -2,16 +2,22 @@
 #include "random_demo.cpp"
 #include "orderProcessor.h"
 #include "market.h"
+#include "randomTable.h"
 #include <fstream>
 #include <vector>
 #include <time.h>
+#include <random>
 
 using namespace std;
 
 int main() {
 
+    randomTable rt;
+    rt.generateGaussTable();
+    rt.generateGaussTable();
+    rt.printGeneratedGaussList(8);
 //    random_main();
-
+/*
     int n = 2;
 
     bool usingTradeRecord = false;
@@ -40,6 +46,6 @@ int main() {
     //计时结束
     finish = clock();
     totalTime = (double_t)(finish - start) / CLOCKS_PER_SEC;
-    cout<<totalTime;
+    cout<<totalTime;*/
     return 0;
 }

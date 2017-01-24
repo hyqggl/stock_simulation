@@ -6,6 +6,12 @@
 
 #IncludeRegexTransform: 
 
+/Users/huyiqing/ClionProjects/stock_simulation/agentOG.cpp
+agentOG.h
+/Users/huyiqing/ClionProjects/stock_simulation/agentOG.h
+
+/Users/huyiqing/ClionProjects/stock_simulation/agentOG.h
+
 /Users/huyiqing/ClionProjects/stock_simulation/main.cpp
 iostream
 -
@@ -15,11 +21,15 @@ orderProcessor.h
 /Users/huyiqing/ClionProjects/stock_simulation/orderProcessor.h
 market.h
 /Users/huyiqing/ClionProjects/stock_simulation/market.h
+randomTable.h
+/Users/huyiqing/ClionProjects/stock_simulation/randomTable.h
 fstream
 -
 vector
 -
 time.h
+-
+random
 -
 
 /Users/huyiqing/ClionProjects/stock_simulation/market.cpp
@@ -61,6 +71,22 @@ tradeRecord.h
 /Users/huyiqing/ClionProjects/stock_simulation/tradeRecord.h
 order.h
 /Users/huyiqing/ClionProjects/stock_simulation/order.h
+
+/Users/huyiqing/ClionProjects/stock_simulation/randomTable.cpp
+randomTable.h
+/Users/huyiqing/ClionProjects/stock_simulation/randomTable.h
+
+/Users/huyiqing/ClionProjects/stock_simulation/randomTable.h
+stdlib.h
+-
+math.h
+-
+time.h
+-
+map
+-
+iostream
+-
 
 /Users/huyiqing/ClionProjects/stock_simulation/random_demo.cpp
 stdlib.h

@@ -123,6 +123,33 @@ stock_simulation/fast:
 	$(MAKE) -f CMakeFiles/stock_simulation.dir/build.make CMakeFiles/stock_simulation.dir/build
 .PHONY : stock_simulation/fast
 
+agentOG.o: agentOG.cpp.o
+
+.PHONY : agentOG.o
+
+# target to build an object file
+agentOG.cpp.o:
+	$(MAKE) -f CMakeFiles/stock_simulation.dir/build.make CMakeFiles/stock_simulation.dir/agentOG.cpp.o
+.PHONY : agentOG.cpp.o
+
+agentOG.i: agentOG.cpp.i
+
+.PHONY : agentOG.i
+
+# target to preprocess a source file
+agentOG.cpp.i:
+	$(MAKE) -f CMakeFiles/stock_simulation.dir/build.make CMakeFiles/stock_simulation.dir/agentOG.cpp.i
+.PHONY : agentOG.cpp.i
+
+agentOG.s: agentOG.cpp.s
+
+.PHONY : agentOG.s
+
+# target to generate assembly for a file
+agentOG.cpp.s:
+	$(MAKE) -f CMakeFiles/stock_simulation.dir/build.make CMakeFiles/stock_simulation.dir/agentOG.cpp.s
+.PHONY : agentOG.cpp.s
+
 main.o: main.cpp.o
 
 .PHONY : main.o
@@ -231,6 +258,33 @@ orderProcessor.cpp.s:
 	$(MAKE) -f CMakeFiles/stock_simulation.dir/build.make CMakeFiles/stock_simulation.dir/orderProcessor.cpp.s
 .PHONY : orderProcessor.cpp.s
 
+randomTable.o: randomTable.cpp.o
+
+.PHONY : randomTable.o
+
+# target to build an object file
+randomTable.cpp.o:
+	$(MAKE) -f CMakeFiles/stock_simulation.dir/build.make CMakeFiles/stock_simulation.dir/randomTable.cpp.o
+.PHONY : randomTable.cpp.o
+
+randomTable.i: randomTable.cpp.i
+
+.PHONY : randomTable.i
+
+# target to preprocess a source file
+randomTable.cpp.i:
+	$(MAKE) -f CMakeFiles/stock_simulation.dir/build.make CMakeFiles/stock_simulation.dir/randomTable.cpp.i
+.PHONY : randomTable.cpp.i
+
+randomTable.s: randomTable.cpp.s
+
+.PHONY : randomTable.s
+
+# target to generate assembly for a file
+randomTable.cpp.s:
+	$(MAKE) -f CMakeFiles/stock_simulation.dir/build.make CMakeFiles/stock_simulation.dir/randomTable.cpp.s
+.PHONY : randomTable.cpp.s
+
 tradeRecord.o: tradeRecord.cpp.o
 
 .PHONY : tradeRecord.o
@@ -267,6 +321,9 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... stock_simulation"
+	@echo "... agentOG.o"
+	@echo "... agentOG.i"
+	@echo "... agentOG.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
@@ -279,6 +336,9 @@ help:
 	@echo "... orderProcessor.o"
 	@echo "... orderProcessor.i"
 	@echo "... orderProcessor.s"
+	@echo "... randomTable.o"
+	@echo "... randomTable.i"
+	@echo "... randomTable.s"
 	@echo "... tradeRecord.o"
 	@echo "... tradeRecord.i"
 	@echo "... tradeRecord.s"
