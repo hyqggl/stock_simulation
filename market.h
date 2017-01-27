@@ -15,7 +15,7 @@
  */
 class market {
 public:
-    market(int n, tradeRecord* trc = nullptr, bool utr = false);
+    market(int n, long totalTimeU, tradeRecord* trc = nullptr, bool utr = false);
     ~market();
     void initialize();
     void initialize_day();
@@ -35,11 +35,13 @@ private:
     int**  stockPricesRecord;   //用于记录每天每只股票价格
     int**  volumeRecord;
     long** volumeFlowReocrd;
-    int   totalTimeUnits;
+    long   totalTimeUnits;
     const int   stockNumber;
     int   dateNow;
     int   timeUnitNow;
     int*  closePriceYestoday;
+    int*  priceCell;
+    int*  priceFloor;
     int*  openPriceToday;
     string recordDir;
     bool usingTradeRecord;

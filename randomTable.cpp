@@ -1,6 +1,3 @@
-//
-// Created by huyiqing on 2017/1/23.
-//
 
 
 #include "randomTable.h"
@@ -114,17 +111,60 @@ void randomTable::printGeneratedGaussList(int n)
     if (n > gaussTable_Num)
     {
         cout << "N is too large." << endl;
-        return;
+        exit(1);
     }
 
     if (gaussTable_first[n-1][0] != gaussTable_second[n-1][0])
     {
         cout << "Something wrong happened. gaussList numbers do not match." << endl;
-        return;
+        exit(1);
     }
 
     for (int i = 1; i <= gaussTable_first[n-1][0]; i++)
     {
         cout << gaussTable_first[n-1][i] << " : " << gaussTable_second[n-1][i] << endl;
     }
+}
+
+pair<int*, unsigned int*> randomTable::getGaussOrderSample_byGroup(int n)
+{
+    if (n > gaussTable_Num)
+    {
+        cout << "N is too large." << endl;
+        exit(1);
+    }
+
+    if (gaussTable_first[n-1][0] != gaussTable_second[n-1][0])
+    {
+        cout << "Something wrong happened. gaussList numbers do not match." << endl;
+        exit(1);
+    }
+
+    return pair<int*, unsigned int*> (gaussTable_first[n-1], gaussTable_second[n-1]);
+}
+
+pair<int*, unsigned int*> randomTable::getGaussOrderSample_byNumber(int n)
+{
+    if (n < 0) {
+        cout << "N is too small." <<endl;
+        exit(1);
+    }
+
+    if (n < (10 + 30) / 2) {
+        return pair<int*, unsigned int*> (gaussTable_first[0], gaussTable_second[0]);
+    } else if (n < (30 + 90) / 2) {
+        return pair<int*, unsigned int*> (gaussTable_first[1], gaussTable_second[1]);
+    } else if (n < (90 + 270) / 2) {
+        return pair<int*, unsigned int*> (gaussTable_first[2], gaussTable_second[2]);
+    } else if (n < (270 + 810) / 2) {
+        return pair<int*, unsigned int*> (gaussTable_first[3], gaussTable_second[3]);
+    } else if (n < (810 + 2430) / 2) {
+        return pair<int*, unsigned int*> (gaussTable_first[4], gaussTable_second[4]);
+    } else if (n < (2430 + 7290) / 2) {
+        return pair<int*, unsigned int*> (gaussTable_first[5], gaussTable_second[5]);
+    } else if (n < (7290 + 21870) / 2) {
+        return pair<int*, unsigned int*> (gaussTable_first[6], gaussTable_second[6]);
+    } else
+        return pair<int*, unsigned int*> (gaussTable_first[7], gaussTable_second[7]);
+
 }

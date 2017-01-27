@@ -55,9 +55,8 @@ void orderProcessor::setOpenPrice(int* price0)
     }
 }
 
-void orderProcessor::addBuyOrder(marketOrderGenerator &mog)
+void orderProcessor::addBuyOrder(const map<int, unsigned int>* temp)
 {
-    auto temp = mog.generateBuyOrder();
     for (int i = 0; i < stockNumber; i++)
     {
         map<int, unsigned int>::const_iterator iter;
@@ -68,10 +67,8 @@ void orderProcessor::addBuyOrder(marketOrderGenerator &mog)
     }
 }
 
-void orderProcessor::addSellOrder(marketOrderGenerator &mog)
+void orderProcessor::addSellOrder(const map<int, unsigned int>* temp)
 {
-    mog.generateSellOrder();
-    auto temp = mog.generateSellOrder();
     for (int i = 0; i < stockNumber; i++)
     {
         map<int, unsigned int>::const_iterator iter;

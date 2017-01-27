@@ -4,10 +4,12 @@
 
 #include "market.h"
 
-market::market(int n, tradeRecord* trc, bool utr):stockNumber(n),mog(n),op(n),p_tr(trc),totalTimeUnits(10000)
+market::market(int n, long totalTimeU, tradeRecord* trc, bool utr):stockNumber(n),mog(n, totalTimeU), op(n),p_tr(trc),totalTimeUnits(totalTimeU)
 , recordDir("/Users/huyiqing/smTest/"), usingTradeRecord(utr)//todo
 {
     closePriceYestoday = new int[stockNumber];
+    priceCell = new int[stockNumber];
+    priceFloor = new int[stockNumber];
     openPriceToday = new int[stockNumber];
     stockPricesRecord = new int*[stockNumber];
     volumeRecord      = new int*[stockNumber];
@@ -27,6 +29,10 @@ market::~market()
 {
     delete []closePriceYestoday;
     closePriceYestoday = NULL;
+    delete []priceCell;
+    priceCell = NULL;
+    delete []priceFloor;
+    priceFloor = NULL;
     delete []openPriceToday;
     openPriceToday = NULL;
     for (int i = 0; i < stockNumber; i++)
@@ -52,6 +58,8 @@ void market::initialize()   //todo
     for (int i = 0; i < stockNumber; i++)
     {
         closePriceYestoday[i] = 4800;
+        priceCell[i] =(int)(4800 * 1.1);
+        priceFloor[i] = (int)(4800 * 0.9);
     }
 }
 
@@ -69,9 +77,9 @@ void market::initialize_day()
 
 void market::runAUnit()
 {
+    op.addBuyOrder(mog.generateBuyOrder(timeUnitNow, stockPricesRecord, priceCell, priceFloor));
+    op.addSellOrder(mog.generateSellOrder(timeUnitNow, stockPricesRecord, priceCell, priceFloor));
     timeUnitNow += 1;
-    op.addBuyOrder(mog);
-    op.addSellOrder(mog);
     op.getPriceNRecord(dateNow, timeUnitNow, p_tr, usingTradeRecord);
     printPrices();
 

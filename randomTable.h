@@ -19,6 +19,8 @@ public:
     ~randomTable();
     void generateGaussTable();
     double gaussrand();
+    pair<int*, unsigned int*> getGaussOrderSample_byGroup(int n);
+    pair<int*, unsigned int*> getGaussOrderSample_byNumber(int n);
 
     void printGeneratedGaussList(int n);
 
