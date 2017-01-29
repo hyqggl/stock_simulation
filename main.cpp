@@ -29,14 +29,22 @@ int main() {
     marketOrderGenerator mog(n, 10000);
     mog.getAlphaBeta();
     int flag[2] = {4800, 4800};
-    mog.geneMarketChange_sellSide(flag);
-    const int** xy = mog.getSellsideOffset();
-    const double** xz = mog.getSellsideRatio();
-    for (int i = 0; i < 2; i++)
+    int flag2[2] = {10000, 100000000};
+//    mog.geneMarketChange_sellSide(flag);
+    mog.geneMarketChange_buySide(flag);
+    mog.geneMarketVolumnChange_buySide(flag2);
+//    mog.geneMarketVolumnChange_sellSide(flag2);
+//    const int** xy = mog.getSellsideOffset();
+//    const double** xz = mog.getSellsideRatio();
+//    const int** xy1 = mog.getVolumnBuysideOffset();
+//    const double** xz1 = mog.getVolumnBuysideRatio();
+//        const int** xy1 = mog.getVolumnSellsideOffset();
+//    const double** xz1 = mog.getVolumnSellsideRatio();
+/*    for (int i = 0; i < 2; i++)
     {
         for (int j = 0; j < 10000; j++)
         {
-            cout << xy[i][j] << " ";
+            cout << xy1[i][j] << " ";
         }
         cout << endl;
     }
@@ -45,10 +53,15 @@ int main() {
     {
         for (int j = 0; j < 10000; j++)
         {
-            cout << xz[i][j] << " ";
+            cout << xz1[i][j] << " ";
         }
         cout << endl;
-    }
+    }*/
+
+    int cell_flag[2] = {5400, 5400};
+    int floor_flag[2] = {4500, 4500};
+    mog.generateBuyOrder(1, NULL, cell_flag, floor_flag);
+    mog.print_buyOrder();
 
 /*    market mkt(n, 10000, p_Tr, usingTradeRecord);
 

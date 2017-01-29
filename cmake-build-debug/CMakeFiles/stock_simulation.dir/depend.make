@@ -18,15 +18,18 @@ CMakeFiles/stock_simulation.dir/market.cpp.o: ../market.h
 CMakeFiles/stock_simulation.dir/market.cpp.o: ../marketOrderGenerator.h
 CMakeFiles/stock_simulation.dir/market.cpp.o: ../order.h
 CMakeFiles/stock_simulation.dir/market.cpp.o: ../orderProcessor.h
+CMakeFiles/stock_simulation.dir/market.cpp.o: ../randomTable.h
 CMakeFiles/stock_simulation.dir/market.cpp.o: ../tradeRecord.h
 
 CMakeFiles/stock_simulation.dir/marketOrderGenerator.cpp.o: ../marketOrderGenerator.cpp
 CMakeFiles/stock_simulation.dir/marketOrderGenerator.cpp.o: ../marketOrderGenerator.h
+CMakeFiles/stock_simulation.dir/marketOrderGenerator.cpp.o: ../randomTable.h
 
 CMakeFiles/stock_simulation.dir/orderProcessor.cpp.o: ../marketOrderGenerator.h
 CMakeFiles/stock_simulation.dir/orderProcessor.cpp.o: ../order.h
 CMakeFiles/stock_simulation.dir/orderProcessor.cpp.o: ../orderProcessor.cpp
 CMakeFiles/stock_simulation.dir/orderProcessor.cpp.o: ../orderProcessor.h
+CMakeFiles/stock_simulation.dir/orderProcessor.cpp.o: ../randomTable.h
 CMakeFiles/stock_simulation.dir/orderProcessor.cpp.o: ../tradeRecord.h
 
 CMakeFiles/stock_simulation.dir/randomTable.cpp.o: ../randomTable.cpp

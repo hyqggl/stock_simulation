@@ -99,8 +99,6 @@ void randomTable::generateGaussTable()
         }
     }
 
-    map<int, unsigned int>::iterator it;
-
 
     gaussTableGened = true;
 }
