@@ -24,7 +24,7 @@ public:
     bool initializeRecord();
     bool writeOut(int date);
 
-    void updateClosePrice();
+    void updateClosePriceAndVolumn(int timeU);
 
     void printUndoOrder();
     void printPrices();
@@ -40,6 +40,7 @@ private:
     int   dateNow;
     int   timeUnitNow;
     int*  closePriceYestoday;
+    int*  volumnYestoday;
     int*  priceCell;
     int*  priceFloor;
     int*  openPriceToday;

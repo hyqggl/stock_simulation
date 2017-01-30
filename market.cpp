@@ -8,6 +8,7 @@ market::market(int n, long totalTimeU, tradeRecord* trc, bool utr):stockNumber(n
 , recordDir("/Users/huyiqing/smTest/"), usingTradeRecord(utr)//todo
 {
     closePriceYestoday = new int[stockNumber];
+    volumnYestoday = new int[stockNumber];
     priceCell = new int[stockNumber];
     priceFloor = new int[stockNumber];
     openPriceToday = new int[stockNumber];
@@ -29,6 +30,8 @@ market::~market()
 {
     delete []closePriceYestoday;
     closePriceYestoday = NULL;
+    delete []volumnYestoday;
+    volumnYestoday = NULL;
     delete []priceCell;
     priceCell = NULL;
     delete []priceFloor;
@@ -52,7 +55,7 @@ market::~market()
     volumeFlowReocrd = NULL;
 }
 
-void market::initialize()   //todo
+void market::initialize()   //todo       closePriceYestoday, price_cell, price_floor, YestodayVolumn
 {
     dateNow = 0;
     for (int i = 0; i < stockNumber; i++)
@@ -60,10 +63,11 @@ void market::initialize()   //todo
         closePriceYestoday[i] = 4800;
         priceCell[i] =(int)(4800 * 1.1);
         priceFloor[i] = (int)(4800 * 0.9);
+        volumnYestoday[i] = 10000;
     }
 }
 
-void market::initialize_day()
+void market::initialize_day()  //todo  openPriceToday
 {
     dateNow++;
     timeUnitNow = 0;
@@ -73,13 +77,18 @@ void market::initialize_day()
     }
     op.setOpenPrice(openPriceToday);
     record(timeUnitNow);
+    mog.getAlphaBeta();
+    mog.geneMarketChange_buySide(closePriceYestoday); //todo openPrice
+    mog.geneMarketChange_sellSide(closePriceYestoday);
+    mog.geneMarketVolumnChange_buySide(volumnYestoday);
+    mog.geneMarketVolumnChange_sellSide(volumnYestoday);
 }
 
 void market::runAUnit()
 {
+    timeUnitNow += 1;
     op.addBuyOrder(mog.generateBuyOrder(timeUnitNow, stockPricesRecord, priceCell, priceFloor));
     op.addSellOrder(mog.generateSellOrder(timeUnitNow, stockPricesRecord, priceCell, priceFloor));
-    timeUnitNow += 1;
     op.getPriceNRecord(dateNow, timeUnitNow, p_tr, usingTradeRecord);
     printPrices();
 
@@ -87,7 +96,7 @@ void market::runAUnit()
 //    printBuyFiveList();
 
     record(timeUnitNow);
-    updateClosePrice();
+    updateClosePriceAndVolumn(timeUnitNow);
 }
 
 bool market::initializeRecord()
@@ -142,7 +151,7 @@ bool market::writeOut(int date)
     return true;
 }
 
-void market::updateClosePrice()  //todo 优化
+void market::updateClosePriceAndVolumn(int timeU)  //todo 优化
 {
     const int*  PR_C = op.getPrices();
     for (int i = 0; i < stockNumber; i++)

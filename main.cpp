@@ -26,44 +26,25 @@ int main() {
     tradeRecord tr(false);
     p_Tr = &tr;
 
-    marketOrderGenerator mog(n, 10000);
+ /*   marketOrderGenerator mog(n, 10000);
     mog.getAlphaBeta();
-    int flag[2] = {4800, 4800};
-    int flag2[2] = {10000, 100000000};
-//    mog.geneMarketChange_sellSide(flag);
-    mog.geneMarketChange_buySide(flag);
-    mog.geneMarketVolumnChange_buySide(flag2);
-//    mog.geneMarketVolumnChange_sellSide(flag2);
-//    const int** xy = mog.getSellsideOffset();
-//    const double** xz = mog.getSellsideRatio();
-//    const int** xy1 = mog.getVolumnBuysideOffset();
-//    const double** xz1 = mog.getVolumnBuysideRatio();
-//        const int** xy1 = mog.getVolumnSellsideOffset();
-//    const double** xz1 = mog.getVolumnSellsideRatio();
-/*    for (int i = 0; i < 2; i++)
-    {
-        for (int j = 0; j < 10000; j++)
-        {
-            cout << xy1[i][j] << " ";
-        }
-        cout << endl;
-    }
+    int flag_price[2] = {4800, 4800};
+    int flag_volumn[2] = {10000, 100000000};
+    mog.geneMarketChange_buySide(flag_price);
+    mog.geneMarketChange_sellSide(flag_price);
+    mog.geneMarketVolumnChange_buySide(flag_volumn);
+    mog.geneMarketVolumnChange_sellSide(flag_volumn);
 
-    for (int i = 0; i <= 2; i++)
-    {
-        for (int j = 0; j < 10000; j++)
-        {
-            cout << xz1[i][j] << " ";
-        }
-        cout << endl;
-    }*/
 
     int cell_flag[2] = {5400, 5400};
     int floor_flag[2] = {4500, 4500};
     mog.generateBuyOrder(1, NULL, cell_flag, floor_flag);
     mog.print_buyOrder();
+    mog.generateSellOrder(1, NULL, cell_flag, floor_flag);
+    mog.print_sellOrder();
+*/
 
-/*    market mkt(n, 10000, p_Tr, usingTradeRecord);
+    market mkt(n, 10000, p_Tr, usingTradeRecord);
 
     //计时开始
     clock_t start, finish;
@@ -73,17 +54,17 @@ int main() {
     mkt.initialize();
     mkt.initialize_day();
 
-    for (int i = 1; i <= 1; i++) {
+    for (int i = 1; i <= 1000; i++) {
         mkt.runAUnit();
         mkt.record(i);
     }
-    mkt.writeOut(1);
+//    mkt.writeOut(1);
 
 
     //计时结束
     finish = clock();
     totalTime = (double_t)(finish - start) / CLOCKS_PER_SEC;
     cout<<totalTime;
-    */
+
     return 0;
 }

@@ -117,17 +117,31 @@ const map<int, unsigned int>* marketOrderGenerator::generateSellOrder(int timeU,
     for (int i = 0; i < stockNumber; i++)
     {
         sellOrder[i].clear();
-        sellOrder[i][4200] = 3;
-        sellOrder[i][4300] = 3;
-        sellOrder[i][4400] = 3;
-        sellOrder[i][4500] = 3;
-        sellOrder[i][4600] = 3;
-        sellOrder[i][4700] = 3;
-        sellOrder[i][5000] = 3;
-        sellOrder[i][5090] = 6;
-        sellOrder[i][5100] = 9;
-        sellOrder[i][5300] = 5;
-        sellOrder[i][5400] = 1;
+//        sellOrder[i][4200] = 3;
+//        sellOrder[i][4300] = 3;
+//        sellOrder[i][4400] = 3;
+//        sellOrder[i][4500] = 3;
+//        sellOrder[i][4600] = 3;
+//        sellOrder[i][4700] = 3;
+//        sellOrder[i][5000] = 3;
+//        sellOrder[i][5090] = 6;
+//        sellOrder[i][5100] = 9;
+//        sellOrder[i][5300] = 5;
+//        sellOrder[i][5400] = 1;
+
+        int* sell_1;
+        unsigned int* sell_2;
+        int volumn = Vtable_sell_offset[i][timeU - 1];
+        pair<int*, unsigned int*> p = randomT.getGaussOrderSample_byNumber(volumn);
+        sell_1 = p.first;
+        sell_2 = p.second;
+        for (int j = 1; j <= sell_1[0]; ++ j)
+        {
+            int temp = sell_1[j] + Xtable_sell_offset[i][timeU - 1];
+            if (temp <= pCell[i] && temp >= pFloor[i]) {
+                sellOrder[i][temp] = sell_2[j];
+            }
+        }
     }
 
     return sellOrder;
@@ -486,6 +500,19 @@ void marketOrderGenerator::print_buyOrder()
         cout << "========== Buy Order " << i << "============" << endl;
         map<int, unsigned int>::const_iterator it;
         for (it = buyOrder[i].begin(); it != buyOrder[i].end(); ++ it)
+        {
+            cout << it->first << " : " << it->second << endl;
+        }
+    }
+}
+
+void marketOrderGenerator::print_sellOrder()
+{
+    for (int i = 0; i < stockNumber; ++i)
+    {
+        cout << "========== Sell Order " << i << "============" << endl;
+        map<int, unsigned int>::const_iterator it;
+        for (it = sellOrder[i].begin(); it != sellOrder[i].end(); ++ it)
         {
             cout << it->first << " : " << it->second << endl;
         }
