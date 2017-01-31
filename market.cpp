@@ -75,7 +75,7 @@ void market::initialize_day()  //todo  openPriceToday
     {
         openPriceToday[i] = closePriceYestoday[i];
     }
-    op.setOpenPrice(openPriceToday);
+    op.setOpenPrice(openPriceToday);//todo
     record(timeUnitNow);
     mog.getAlphaBeta();
     mog.geneMarketChange_buySide(closePriceYestoday); //todo openPrice
@@ -96,6 +96,10 @@ void market::runAUnit()
 //    printBuyFiveList();
 
     record(timeUnitNow);
+}
+
+void market::endOfDay()
+{
     updateClosePriceAndVolumn(timeUnitNow);
 }
 
@@ -130,7 +134,7 @@ void market::record(int timeUnit_N, int n)
     }
 }
 
-bool market::writeOut(int date)
+bool market::writeOut(int date, int timeUnitNow)
 {
     //todo
     ofstream sf(recordDir + "tRecord.txt", ios_base::app);
@@ -157,6 +161,9 @@ void market::updateClosePriceAndVolumn(int timeU)  //todo 优化
     for (int i = 0; i < stockNumber; i++)
     {
         closePriceYestoday[i] = PR_C[i];
+        volumnYestoday[i] = 0;
+        for (int j = 1; j <= timeU; ++ j)
+        volumnYestoday[i] += volumeRecord[i][j]; //overFlow
     }
 }
 

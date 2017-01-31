@@ -44,7 +44,9 @@ int main() {
     mog.print_sellOrder();
 */
 
-    market mkt(n, 10000, p_Tr, usingTradeRecord);
+    int totalTimeUnits = 10000;
+
+    market mkt(n, totalTimeUnits, p_Tr, usingTradeRecord);
 
     //计时开始
     clock_t start, finish;
@@ -52,15 +54,22 @@ int main() {
     start = clock();
 
     mkt.initialize();
-    mkt.initialize_day();
 
-    for (int i = 1; i <= 1000; i++) {
-        mkt.runAUnit();
-        mkt.record(i);
-    }
+    for (int day = 1; day <= 1; ++ day)
+    {
+
+        mkt.initialize_day();
+
+        for (int i = 1; i <= 10000; i++) {
+            mkt.runAUnit();
+            mkt.record(i);
+        }
+
+        mkt.endOfDay();
+//    mkt.initializeRecord();
 //    mkt.writeOut(1);
 
-
+    }
     //计时结束
     finish = clock();
     totalTime = (double_t)(finish - start) / CLOCKS_PER_SEC;
