@@ -21,8 +21,6 @@ market::market(int n, long totalTimeU, tradeRecord* trc, bool utr):stockNumber(n
         volumeRecord[i]      = new int[totalTimeUnits + 1];
         volumeFlowReocrd[i] = new long[totalTimeUnits + 1];
     }
-
-    initializeRecord();
 }
 
 
@@ -71,12 +69,14 @@ void market::initialize_day()  //todo  openPriceToday
 {
     dateNow++;
     timeUnitNow = 0;
+
     for (int i = 0; i < stockNumber; i++)
     {
         openPriceToday[i] = closePriceYestoday[i];
     }
-    op.setOpenPrice(openPriceToday);//todo
+    op.setOpenPrice_iniVolumn_iniVolumnFlow(openPriceToday);//todo
     record(timeUnitNow);
+
     mog.getAlphaBeta();
     mog.geneMarketChange_buySide(closePriceYestoday); //todo openPrice
     mog.geneMarketChange_sellSide(closePriceYestoday);
@@ -137,6 +137,7 @@ void market::record(int timeUnit_N, int n)
 bool market::writeOut(int date, int timeUnitNow)
 {
     //todo
+    //依次为 股票ID， 日期， 当日时间点，股价，交易量，交易额
     ofstream sf(recordDir + "tRecord.txt", ios_base::app);
     for (int i = 0; i < stockNumber; i++) {
         for (int j = 0; j <= timeUnitNow; j++) {

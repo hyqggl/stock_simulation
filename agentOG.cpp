@@ -3,3 +3,16 @@
 //
 
 #include "agentOG.h"
+
+
+agentOG::stockHold::stockHold() {};
+
+agentOG::agentOG()
+{
+
+}
+
+agentOG::~agentOG()
+{
+
+}

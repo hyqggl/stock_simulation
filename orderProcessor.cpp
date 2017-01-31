@@ -45,7 +45,7 @@ orderProcessor::~orderProcessor()
     topFiveBuyOrderCache = NULL;
 }
 
-void orderProcessor::setOpenPrice(int* price0)
+void orderProcessor::setOpenPrice_iniVolumn_iniVolumnFlow(int *price0)
 {
     for (int i = 0; i < stockNumber; i++)
     {
