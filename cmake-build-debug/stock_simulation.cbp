@@ -80,12 +80,6 @@
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="/Users/huyiqing/ClionProjects/stock_simulation/agentOG.cpp">
-			<Option target="stock_simulation"/>
-		</Unit>
-		<Unit filename="/Users/huyiqing/ClionProjects/stock_simulation/agentOG.h">
-			<Option target="stock_simulation"/>
-		</Unit>
 		<Unit filename="/Users/huyiqing/ClionProjects/stock_simulation/main.cpp">
 			<Option target="stock_simulation"/>
 		</Unit>

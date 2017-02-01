@@ -4,7 +4,6 @@ file(REMOVE_RECURSE
   "CMakeFiles/stock_simulation.dir/market.cpp.o"
   "CMakeFiles/stock_simulation.dir/orderProcessor.cpp.o"
   "CMakeFiles/stock_simulation.dir/tradeRecord.cpp.o"
-  "CMakeFiles/stock_simulation.dir/agentOG.cpp.o"
   "CMakeFiles/stock_simulation.dir/randomTable.cpp.o"
   "stock_simulation.pdb"
   "stock_simulation"
