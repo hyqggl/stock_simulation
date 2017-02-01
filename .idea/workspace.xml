@@ -12,16 +12,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="83132324-426b-4c46-9bd4-ad09beebf0cb" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/stock_simulation.dir/main.cpp.o" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/stock_simulation.dir/main.cpp.o" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/stock_simulation.dir/market.cpp.o" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/stock_simulation.dir/market.cpp.o" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cmake-build-debug/stock_simulation" afterPath="$PROJECT_DIR$/cmake-build-debug/stock_simulation" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/agentOG.cpp" afterPath="$PROJECT_DIR$/agentOG.cpp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/agentOG.h" afterPath="$PROJECT_DIR$/agentOG.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main.cpp" afterPath="$PROJECT_DIR$/main.cpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/market.cpp" afterPath="$PROJECT_DIR$/market.cpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/orderProcessor.cpp" afterPath="$PROJECT_DIR$/orderProcessor.cpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/orderProcessor.h" afterPath="$PROJECT_DIR$/orderProcessor.h" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -39,7 +31,7 @@
       <file leaf-file-name="main.cpp" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/main.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="97">
+            <state relative-caret-position="704">
               <caret line="32" column="35" lean-forward="false" selection-start-line="32" selection-start-column="30" selection-end-line="32" selection-end-column="35" />
               <folding>
                 <element signature="e#0#19#0" expanded="true" />
@@ -51,8 +43,8 @@
       <file leaf-file-name="agentOG.cpp" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/agentOG.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="154">
-              <caret line="7" column="33" lean-forward="false" selection-start-line="7" selection-start-column="33" selection-end-line="7" selection-end-column="33" />
+            <state relative-caret-position="352">
+              <caret line="16" column="0" lean-forward="true" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -61,8 +53,8 @@
       <file leaf-file-name="agentOG.h" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/agentOG.h">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="242">
-              <caret line="25" column="17" lean-forward="false" selection-start-line="25" selection-start-column="17" selection-end-line="25" selection-end-column="17" />
+            <state relative-caret-position="537">
+              <caret line="60" column="33" lean-forward="false" selection-start-line="60" selection-start-column="33" selection-end-line="60" selection-end-column="33" />
               <folding />
             </state>
           </provider>
@@ -93,7 +85,7 @@
       <file leaf-file-name="market.h" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/market.h">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="176">
+            <state relative-caret-position="-233">
               <caret line="26" column="43" lean-forward="false" selection-start-line="26" selection-start-column="43" selection-end-line="26" selection-end-column="43" />
               <folding />
             </state>
@@ -126,9 +118,9 @@
         <option value="$PROJECT_DIR$/market.h" />
         <option value="$PROJECT_DIR$/tradeRecord.cpp" />
         <option value="$PROJECT_DIR$/orderProcessor.cpp" />
-        <option value="$PROJECT_DIR$/agentOG.cpp" />
         <option value="$PROJECT_DIR$/market.cpp" />
         <option value="$PROJECT_DIR$/main.cpp" />
+        <option value="$PROJECT_DIR$/agentOG.cpp" />
         <option value="$PROJECT_DIR$/agentOG.h" />
       </list>
     </option>
@@ -397,11 +389,12 @@
       <workItem from="1485558909876" duration="4763000" />
       <workItem from="1485650789778" duration="7593000" />
       <workItem from="1485840084352" duration="12232000" />
+      <workItem from="1485912303552" duration="3741000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="173101000" />
+    <option name="totallyTimeSpent" value="176842000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -418,22 +411,22 @@
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1721557" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3299363" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3987261" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="CMake" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3299363" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3299363" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3299363" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.22547771" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3299363" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.30063695" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3987261" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.22547771" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3299363" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.30063695" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -497,6 +490,7 @@
           <folding>
             <element signature="e#74#694#0" expanded="false" />
             <element signature="e#697#1216#0" expanded="false" />
+            <element signature="e#1218#1441#0" expanded="false" />
             <element signature="e#1443#1768#0" expanded="false" />
             <element signature="e#1770#2097#0" expanded="false" />
             <element signature="e#2099#2134#0" expanded="false" />
@@ -571,6 +565,7 @@
           <folding>
             <element signature="e#74#694#0" expanded="false" />
             <element signature="e#697#1216#0" expanded="false" />
+            <element signature="e#1218#1441#0" expanded="false" />
             <element signature="e#1443#1768#0" expanded="false" />
             <element signature="e#1770#2097#0" expanded="false" />
             <element signature="e#2099#2134#0" expanded="false" />
@@ -645,6 +640,7 @@
           <folding>
             <element signature="e#74#694#0" expanded="false" />
             <element signature="e#697#1216#0" expanded="false" />
+            <element signature="e#1218#1441#0" expanded="false" />
             <element signature="e#1443#1768#0" expanded="false" />
             <element signature="e#1770#2097#0" expanded="false" />
             <element signature="e#2099#2134#0" expanded="false" />
@@ -705,6 +701,7 @@
           <folding>
             <element signature="e#74#694#0" expanded="false" />
             <element signature="e#697#1216#0" expanded="false" />
+            <element signature="e#1218#1441#0" expanded="false" />
             <element signature="e#1443#1768#0" expanded="false" />
             <element signature="e#1770#2097#0" expanded="false" />
             <element signature="e#2099#2134#0" expanded="false" />
@@ -854,7 +851,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="215">
           <caret line="316" column="0" lean-forward="false" selection-start-line="316" selection-start-column="0" selection-end-line="316" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -881,7 +877,7 @@
         <state relative-caret-position="836">
           <caret line="38" column="0" lean-forward="false" selection-start-line="38" selection-start-column="0" selection-end-line="38" selection-end-column="0" />
           <folding>
-            <element signature="e#141#158#0" expanded="true" />
+            <element signature="e#141#158#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -953,9 +949,19 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/main.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="704">
+          <caret line="32" column="35" lean-forward="false" selection-start-line="32" selection-start-column="30" selection-end-line="32" selection-end-column="35" />
+          <folding>
+            <element signature="e#0#19#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/market.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="176">
+        <state relative-caret-position="-233">
           <caret line="26" column="43" lean-forward="false" selection-start-line="26" selection-start-column="43" selection-end-line="26" selection-end-column="43" />
           <folding />
         </state>
@@ -981,28 +987,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/main.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="97">
-          <caret line="32" column="35" lean-forward="false" selection-start-line="32" selection-start-column="30" selection-end-line="32" selection-end-column="35" />
-          <folding>
-            <element signature="e#0#19#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/agentOG.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="154">
-          <caret line="7" column="33" lean-forward="false" selection-start-line="7" selection-start-column="33" selection-end-line="7" selection-end-column="33" />
+        <state relative-caret-position="352">
+          <caret line="16" column="0" lean-forward="true" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/agentOG.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="242">
-          <caret line="25" column="17" lean-forward="false" selection-start-line="25" selection-start-column="17" selection-end-line="25" selection-end-column="17" />
+        <state relative-caret-position="537">
+          <caret line="60" column="33" lean-forward="false" selection-start-line="60" selection-start-column="33" selection-end-line="60" selection-end-column="33" />
           <folding />
         </state>
       </provider>
