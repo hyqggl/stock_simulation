@@ -29,6 +29,7 @@ randomTable::~randomTable()
         gaussTable_second = NULL;
 
     }
+    cout << "RandomTable released." << endl;
 }
 
 double randomTable::gaussrand()

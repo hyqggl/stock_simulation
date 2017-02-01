@@ -47,36 +47,37 @@ marketOrderGenerator::marketOrderGenerator(int n, long totalTU):stockNumber(n), 
         Vtable_buy_offset[i] = new int[totalTU];
         Vtable_sell_offset[i] = new int[totalTU];
     }
+
 }
 
 marketOrderGenerator::~marketOrderGenerator()
 {
-    delete alpha_p; alpha_p = NULL;
-    delete beta_p; beta_p = NULL;
-    delete alpha_v; alpha_v = NULL;
-    delete beta_v; beta_v = NULL;
-    delete []buyOrder;
-    buyOrder = NULL;
-    delete []sellOrder;
-    sellOrder = NULL;
+    delete []alpha_p; alpha_p = NULL;
+    delete []beta_p; beta_p = NULL;
+    delete []alpha_v; alpha_v = NULL;
+    delete []beta_v; beta_v = NULL;
+    delete []buyOrder; buyOrder = NULL;
+    delete []sellOrder; sellOrder = NULL;
 
     delete []Xtable_buy_cumu_r;
     Xtable_buy_cumu_r = NULL;
     delete []Xtable_buy_offset;
     Xtable_buy_offset = NULL;
     delete []Xtable_sell_cumu_r;
-    Xtable_buy_cumu_r = NULL;
+    Xtable_sell_cumu_r = NULL;
     delete []Xtable_sell_offset;
-    Xtable_buy_offset = NULL;
+    Xtable_sell_offset = NULL;
 
     delete []Vtable_buy_cumu_r;
     Vtable_buy_cumu_r = NULL;
     delete []Vtable_buy_offset;
     Vtable_buy_offset = NULL;
     delete []Vtable_sell_cumu_r;
-    Vtable_buy_cumu_r = NULL;
+    Vtable_sell_cumu_r = NULL;
     delete []Vtable_sell_offset;
-    Vtable_buy_offset = NULL;
+    Vtable_sell_offset = NULL;
+
+    cout << "MOG released." << endl;
 }
 
 const map<int, unsigned int>* marketOrderGenerator::generateBuyOrder(int timeU, int** priceRecord, int* pCell, int* pFloor)
@@ -486,11 +487,6 @@ const int** marketOrderGenerator::getVolumnSellsideOffset()
 const double** marketOrderGenerator::getVolumnSellsideRatio()
 {
     return (const double**)Vtable_sell_cumu_r;
-}
-
-void marketOrderGenerator::generateRandomTable()
-{
-
 }
 
 void marketOrderGenerator::print_buyOrder()

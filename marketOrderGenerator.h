@@ -22,11 +22,12 @@ public:
     const map<int, unsigned int>* generateBuyOrder(int timeU, int** priceRecord, int* pCell, int* pFloor);             //买单
     const map<int, unsigned int>* generateSellOrder(int timeU, int** priceRecord, int* pCell, int* pFloor);//卖单
 
-    void getAlphaBeta();
-    void geneMarketChange_buySide(int* closePriceYestoday);
-    void geneMarketChange_sellSide(int* closePriceYestoday);
-    void geneMarketVolumnChange_buySide(int* volumnYestoday);
-    void geneMarketVolumnChange_sellSide(int* volumnYestoday);
+    void getAlphaBeta();       //设置alpha, beta
+    void geneMarketChange_buySide(int* closePriceYestoday);   //生成当日市场买方报价参数
+    void geneMarketChange_sellSide(int* closePriceYestoday);  //生成买方报价参数
+    void geneMarketVolumnChange_buySide(int* volumnYestoday); //生成买方订单量
+    void geneMarketVolumnChange_sellSide(int* volumnYestoday);//生成卖方订单量
+
     const int** getBuysideOffset();
     const double** getBuysideRatio();
     const int** getSellsideOffset();
@@ -35,7 +36,6 @@ public:
     const double** getVolumnBuysideRatio();
     const int** getVolumnSellsideOffset();
     const double** getVolumnSellsideRatio();
-    void generateRandomTable();
 
     void print_buyOrder();
     void print_sellOrder();

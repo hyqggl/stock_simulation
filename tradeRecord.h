@@ -21,7 +21,7 @@ public:
     void addRecord(int n, int date, int time, int price, unsigned int number);
     void writeOut(int n);
 private:
-    bool                 onUsing;
+    const bool                 onUsing;
     int                  sNumber;  //股票数
     int*                 counter;  //计数器，记录每只股票当前记录条数
     int                 capacity;  //最大记录容量

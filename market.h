@@ -19,7 +19,7 @@ public:
      * @param trc        传入的 实时记录器 指针
      * @param utr        是否使用 实时记录器， 默认为不使用时（同时传入空指针）
      */
-    market(int n, long totalTimeU, tradeRecord* trc = nullptr, bool utr = false);
+    market(int n, int totalTimeU, marketOrderGenerator& _mog, orderProcessor& _op, string recordDir, tradeRecord* trc = nullptr, bool utr = false);
     ~market();                //释放内存
     void initialize();        //总体初始化
     void initialize_day();    //一天开始的初始化
@@ -30,19 +30,26 @@ public:
     bool initializeRecord();  //记录IO初始化，清空/新建文件
     bool writeOut(int date, int timeUnitNow);  //写入当日直到某时间单位的记录
 
-    void updateClosePriceAndVolumn(int timeU);
+    void updateClosePriceAndVolumn(int timeU); //更新价格与成交量
 
     void printUndoOrder();
     void printPrices();
     void printSellFiveList(int n = -1);
     void printBuyFiveList(int n = -1);
 
-private:
-    int**  stockPricesRecord;   //用于记录每天每只股票价格
-    int**  volumeRecord;        //.................交易量
-    long** volumeFlowReocrd;    //.................交易额
+    const int** getPrices();
+    const int** getVolumn();
+    const long** getVolumnFlow();
+    const int  getStockNumber();
+    const int  getDateNow();
+    const int  getTimeUnitNow();
 
-    long   totalTimeUnits;      //总时间单位
+private:
+    int**  stockPricesRecord;   //用于记录每天每只股票价格      [0 - (stockNum-1)]   x   [0 - totalTimeUnits]
+    int**  volumeRecord;        //.................交易量    [0 - (stockNum-1)]   x   [0 - totalTimeUnits]
+    long** volumeFlowReocrd;    //.................交易额    [0 - (stockNum-1)]   x   [0 - totalTimeUnits]
+
+    int   totalTimeUnits;      //总时间单位
     const int   stockNumber;    //股票数
     int   dateNow;              //当前日期，从1起算
     int   timeUnitNow;          //当前时间单位，0为开盘时间单位
@@ -56,8 +63,9 @@ private:
     string recordDir;           //记录所在地址
     bool usingTradeRecord;      //是否使用 实时记录器
 
-    orderProcessor op;
-    marketOrderGenerator mog;
+    orderProcessor& op;
+    marketOrderGenerator& mog;
+
     tradeRecord* p_tr;
 };
 

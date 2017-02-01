@@ -4,8 +4,8 @@
 
 #include "market.h"
 
-market::market(int n, long totalTimeU, tradeRecord* trc, bool utr):stockNumber(n),mog(n, totalTimeU), op(n),p_tr(trc),totalTimeUnits(totalTimeU)
-, recordDir("/Users/huyiqing/smTest/"), usingTradeRecord(utr)//todo
+market::market(int n, int totalTimeU, marketOrderGenerator& _mog, orderProcessor& _op, string recordDir, tradeRecord* trc, bool utr):stockNumber(n),mog(_mog), op(_op),p_tr(trc),totalTimeUnits(totalTimeU)
+, recordDir(recordDir), usingTradeRecord(utr)//todo
 {
     closePriceYestoday = new int[stockNumber];
     volumnYestoday = new int[stockNumber];
@@ -51,6 +51,8 @@ market::~market()
     volumeRecord = NULL;
     delete volumeFlowReocrd;
     volumeFlowReocrd = NULL;
+
+    cout << "Market released." << endl;
 }
 
 void market::initialize()   //todo       closePriceYestoday, price_cell, price_floor, YestodayVolumn
@@ -260,3 +262,40 @@ void market::printBuyFiveList(int n)
         cout << endl;
     }
 }
+
+
+
+const int market::getDateNow()
+{
+    return dateNow;
+}
+
+const int market::getTimeUnitNow()
+{
+    return timeUnitNow;
+}
+
+const int market::getStockNumber()
+{
+    return stockNumber;
+}
+
+
+//[0 - (stockNum-1)]   x   [0 - totalTimeUnits]
+const int** market::getPrices()
+{
+    return (const int**)stockPricesRecord;
+}
+
+//[0 - (stockNum-1)]   x   [0 - totalTimeUnits]
+const int** market::getVolumn()
+{
+    return (const int**)volumeRecord;
+}
+
+//[0 - (stockNum-1)]   x   [0 - totalTimeUnits]
+const long** market::getVolumnFlow()
+{
+    return (const long**)volumeFlowReocrd;
+}
+

@@ -46,8 +46,28 @@ void tradeRecord::writeOut(int n)
     }
 }
 
-tradeRecord::tradeRecord(bool ou, int n, int capacity, string dir):sNumber(n),direct(dir)
-,initialized(false), onUsing(ou)
+bool tradeRecord::initialize()
+{
+    if (onUsing) {
+        stringstream ss;
+        ss.clear();
+        for (int i = 0; i < sNumber; i++) {
+            ss << "Record_";
+            ss << i;
+            ss << ".txt";
+            recordNameSet[i] = ss.str();
+            ss.str("");
+            ofstream iniF(direct + recordNameSet[i], ios::out);
+            iniF.close();
+        }
+        initialized = true;
+    }
+    return initialized;
+}
+
+
+tradeRecord::tradeRecord(bool ou, int n, int capacity, string dir):onUsing(ou), sNumber(n),direct(dir)
+,initialized(false)
 {
     if (onUsing) {
         this->capacity = capacity;
@@ -68,24 +88,6 @@ tradeRecord::tradeRecord(bool ou, int n, int capacity, string dir):sNumber(n),di
     }
 }
 
-bool tradeRecord::initialize()
-{
-    if (onUsing) {
-        stringstream ss;
-        ss.clear();
-        for (int i = 0; i < sNumber; i++) {
-            ss << "Record_";
-            ss << i;
-            ss << ".txt";
-            recordNameSet[i] = ss.str();
-            ss.str("");
-            ofstream iniF(direct + recordNameSet[i], ios::out);
-            iniF.close();
-        }
-        initialized = true;
-    }
-    return initialized;
-}
 
 tradeRecord::~tradeRecord()
 {
@@ -101,7 +103,7 @@ tradeRecord::~tradeRecord()
             delete record_number[i];
             record_number[i] = NULL;
         }
-        delete counter;
+        delete []counter;
         counter = NULL;
         delete record_date;
         record_date = NULL;
@@ -114,4 +116,7 @@ tradeRecord::~tradeRecord()
         delete[]recordNameSet;
         recordNameSet = NULL;
     }
+
+    cout << "tradeRecord released." << endl;
 }
+

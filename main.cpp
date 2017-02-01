@@ -12,27 +12,28 @@ using namespace std;
 
 int main() {
 
-//    randomTable rt;
-//    rt.generateGaussTable();
-//    rt.printGeneratedGaussList(8);
-//    random_main();
-
-    int n = 2;
+    int n = 2;    //股票数
 
 
     tradeRecord* p_Tr = nullptr;
-    bool usingTradeRecord = false;
+    bool usingTradeRecord = false;   //是否使用实时记录器
     tradeRecord tr(usingTradeRecord);
 //    bool usingTradeRecord = true;
+    //后面的记录保存路径请自行修改
 //    tradeRecord tr(usingTradeRecord, n, 5, "/Users/huyiqing/smTest/tradeRecord/");
     p_Tr = &tr;
 
-    int totalDays = 2;
-    int totalTimeUnits = 10000;
+    int totalDays = 2;             //模拟天数
+    int totalTimeUnits = 1;        //每天时间单位数
 
-    bool usingGeneralRecord = false;
+    bool usingGeneralRecord = false;    //是否使用普通记录器
 
-    market mkt(n, totalTimeUnits, p_Tr, usingTradeRecord);
+    //订单处理器
+    orderProcessor op(n);
+    //市场订单生成器
+    marketOrderGenerator mog(n, totalTimeUnits);
+    //自行修改一般记录存储地址
+    market mkt(n, totalTimeUnits, mog, op, "/Users/huyiqing/smTest/", p_Tr, usingTradeRecord);
 
     //计时开始
     clock_t start, finish;
@@ -66,7 +67,7 @@ int main() {
     //计时结束
     finish = clock();
     totalTime = (double_t)(finish - start) / CLOCKS_PER_SEC;
-    cout<<totalTime;
+    cout << totalTime << endl;
 
     return 0;
 }

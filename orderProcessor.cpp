@@ -25,24 +25,25 @@ orderProcessor::orderProcessor(int n):stockNumber(n)
 
 orderProcessor::~orderProcessor()
 {
-    delete []undoBuyOrder;
-    delete []undoSellOrder;
-    delete []priceCache;
-    delete []volumeCache;
-    delete []volumeFlowCache;
-    priceCache = NULL;
+    delete []undoBuyOrder;   undoBuyOrder = NULL;
+    delete []undoSellOrder;  undoSellOrder = NULL;
+    delete []priceCache;     priceCache = NULL;
+    delete []volumeCache;    volumeCache = NULL;
+    delete []volumeFlowCache; volumeFlowCache = NULL;
     for (int i = 0; i < stockNumber; i++)
     {
-        delete topFiveSellOrderCache[i];
+        delete []topFiveSellOrderCache[i];
     }
-    delete topFiveSellOrderCache;
+    delete []topFiveSellOrderCache;
     topFiveSellOrderCache = NULL;
     for (int i = 0; i < stockNumber; i++)
     {
-        delete topFiveBuyOrderCache[i];
+        delete []topFiveBuyOrderCache[i];
     }
-    delete topFiveBuyOrderCache;
+    delete []topFiveBuyOrderCache;
     topFiveBuyOrderCache = NULL;
+
+    cout << "orderProcessor released." << endl;
 }
 
 void orderProcessor::setOpenPrice_iniVolumn_iniVolumnFlow(int *price0)
