@@ -31,7 +31,16 @@ int main() {
     //订单处理器
     orderProcessor op(n);
     //市场订单生成器
-    marketOrderGenerator mog(n, totalTimeUnits);
+    //设置参数
+    double alpha_p[n], beta_p[n], alpha_v[n], beta_v[n];
+    for (int i = 0; i < n; i++)
+    {
+        alpha_p[i] = 0;
+        beta_p[i] = 1;
+        alpha_v[i] = 0;
+        beta_v[i] = 1;
+    }
+    marketOrderGenerator mog(n, totalTimeUnits, alpha_p, beta_p, alpha_v, beta_v);
     //自行修改一般记录存储地址
     market mkt(n, totalTimeUnits, mog, op, "/Users/huyiqing/smTest/", p_Tr, usingTradeRecord);
 
@@ -40,7 +49,16 @@ int main() {
     double totalTime;
     start = clock();
 
-    mkt.initialize();
+    //【设置昨日价格与成交量】 价格:48.00 -> 4800
+    int closePYestoday[n];
+    int volumnYestoday[n];
+    for (int i = 0; i < n; i++)
+    {
+        closePYestoday[i] = 4800;
+        volumnYestoday[i] = 10000;
+    }
+    mkt.initialize(closePYestoday, volumnYestoday);
+
     if (usingGeneralRecord) {
         mkt.initializeRecord();
     }

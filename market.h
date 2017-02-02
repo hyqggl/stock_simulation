@@ -21,7 +21,7 @@ public:
      */
     market(int n, int totalTimeU, marketOrderGenerator& _mog, orderProcessor& _op, string recordDir, tradeRecord* trc = nullptr, bool utr = false);
     ~market();                //释放内存
-    void initialize();        //总体初始化
+    void initialize(int* _closePriceYestoday, int* _volumnYestoday);        //总体初始化
     void initialize_day();    //一天开始的初始化
     void runAUnit();          //运行一个时间单位
     void endOfDay();          //一天结束，更新相关数据

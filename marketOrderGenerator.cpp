@@ -7,7 +7,7 @@
 
 
 
-marketOrderGenerator::marketOrderGenerator(int n, long totalTU):stockNumber(n), totalTimeUnits(totalTU), randomT()
+marketOrderGenerator::marketOrderGenerator(int n, long totalTU, double* _alpha_p, double* _beta_p, double* _alpha_v, double* _beta_v):stockNumber(n), totalTimeUnits(totalTU), randomT()
 {
     randomT.generateGaussTable(); //生成随机数表
 
@@ -17,6 +17,13 @@ marketOrderGenerator::marketOrderGenerator(int n, long totalTU):stockNumber(n), 
     beta_p = new double[n];
     alpha_v = new double[n];
     beta_v = new double[n];
+    for (int i = 0; i < n; i++)
+    {
+        alpha_p[i] = _alpha_p[i];
+        beta_p[i] = _beta_p[i];
+        alpha_v[i] = _alpha_p[i];
+        beta_v[i] = _beta_v[i];
+    }
 
     Xtable_buy_cumu_r = new double* [n + 1];
     Xtable_sell_cumu_r = new double* [n + 1];
@@ -146,17 +153,6 @@ const map<int, unsigned int>* marketOrderGenerator::generateSellOrder(int timeU,
     }
 
     return sellOrder;
-}
-
-void marketOrderGenerator::getAlphaBeta() //todo
-{
-    for (int i = 0; i < stockNumber; i++)
-    {
-        alpha_p[i] = 0;
-        beta_p[i] = 1;
-        alpha_v[i] = 0;
-        beta_v[i] = 1;
-    }
 }
 
 void marketOrderGenerator::geneMarketChange_buySide(int* closePriceYestoday)

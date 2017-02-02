@@ -55,15 +55,15 @@ market::~market()
     cout << "Market released." << endl;
 }
 
-void market::initialize()   //todo       closePriceYestoday, price_cell, price_floor, YestodayVolumn
+void market::initialize(int* _closePriceYestoday, int* _volumnYestoday)   //todo       closePriceYestoday, price_cell, price_floor, YestodayVolumn
 {
     dateNow = 0;
     for (int i = 0; i < stockNumber; i++)
     {
-        closePriceYestoday[i] = 4800;
-        priceCell[i] =(int)(4800 * 1.1);
-        priceFloor[i] = (int)(4800 * 0.9);
-        volumnYestoday[i] = 10000;
+        closePriceYestoday[i] = _closePriceYestoday[i];
+        priceCell[i] =(int)(closePriceYestoday[i] * 1.1);
+        priceFloor[i] = (int)(closePriceYestoday[i] * 0.9);
+        volumnYestoday[i] = _volumnYestoday[i];
     }
 }
 
@@ -79,7 +79,6 @@ void market::initialize_day()  //todo  openPriceToday
     op.setOpenPrice_iniVolumn_iniVolumnFlow(openPriceToday);//todo
     record(timeUnitNow);
 
-    mog.getAlphaBeta();
     mog.geneMarketChange_buySide(closePriceYestoday); //todo openPrice
     mog.geneMarketChange_sellSide(closePriceYestoday);
     mog.geneMarketVolumnChange_buySide(volumnYestoday);

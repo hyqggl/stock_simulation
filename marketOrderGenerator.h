@@ -16,13 +16,12 @@ using namespace std;
 class marketOrderGenerator
 {
 public:
-    marketOrderGenerator(int n, long totalTU);
+    marketOrderGenerator(int n, long totalTU, double* _alpha_p, double* _beta_p, double* _alpha_v, double* _beta_v);
     ~marketOrderGenerator();
 
     const map<int, unsigned int>* generateBuyOrder(int timeU, int** priceRecord, int* pCell, int* pFloor);             //买单
     const map<int, unsigned int>* generateSellOrder(int timeU, int** priceRecord, int* pCell, int* pFloor);//卖单
 
-    void getAlphaBeta();       //设置alpha, beta
     void geneMarketChange_buySide(int* closePriceYestoday);   //生成当日市场买方报价参数
     void geneMarketChange_sellSide(int* closePriceYestoday);  //生成买方报价参数
     void geneMarketVolumnChange_buySide(int* volumnYestoday); //生成买方订单量
