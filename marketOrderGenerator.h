@@ -7,6 +7,7 @@
 
 #include <vector>
 #include <map>
+#include <unordered_map>
 #include <random>
 #include "randomTable.h"
 
@@ -19,8 +20,8 @@ public:
     marketOrderGenerator(int n, long totalTU, double* _alpha_p, double* _beta_p, double* _alpha_v, double* _beta_v);
     ~marketOrderGenerator();
 
-    const map<int, unsigned int>* generateBuyOrder(int timeU, int** priceRecord, int* pCell, int* pFloor);             //买单
-    const map<int, unsigned int>* generateSellOrder(int timeU, int** priceRecord, int* pCell, int* pFloor);//卖单
+    const unordered_map<int, unsigned int>* generateBuyOrder(int timeU, int** priceRecord, int* pCell, int* pFloor);             //买单
+    const unordered_map<int, unsigned int>* generateSellOrder(int timeU, int** priceRecord, int* pCell, int* pFloor);//卖单
 
     void geneMarketChange_buySide(int* closePriceYestoday);   //生成当日市场买方报价参数
     void geneMarketChange_sellSide(int* closePriceYestoday);  //生成买方报价参数
@@ -41,8 +42,8 @@ public:
 private:
     const int stockNumber;
     const long totalTimeUnits;
-    map<int, unsigned int>* buyOrder;
-    map<int, unsigned int>* sellOrder;
+    unordered_map<int, unsigned int>* buyOrder;
+    unordered_map<int, unsigned int>* sellOrder;
 
     double*  beta_p;
     double*  alpha_p;

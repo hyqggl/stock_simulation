@@ -56,11 +56,11 @@ void orderProcessor::setOpenPrice_iniVolumn_iniVolumnFlow(int *price0)
     }
 }
 
-void orderProcessor::addBuyOrder(const map<int, unsigned int>* temp)
+void orderProcessor::addBuyOrder(const unordered_map<int, unsigned int>* temp)
 {
     for (int i = 0; i < stockNumber; i++)
     {
-        map<int, unsigned int>::const_iterator iter;
+        unordered_map<int, unsigned int>::const_iterator iter;
         for (iter = temp[i].begin(); iter != temp[i].end(); iter++)
         {
             undoBuyOrder[i][iter->first] += iter->second;
@@ -68,11 +68,11 @@ void orderProcessor::addBuyOrder(const map<int, unsigned int>* temp)
     }
 }
 
-void orderProcessor::addSellOrder(const map<int, unsigned int>* temp)
+void orderProcessor::addSellOrder(const unordered_map<int, unsigned int>* temp)
 {
     for (int i = 0; i < stockNumber; i++)
     {
-        map<int, unsigned int>::const_iterator iter;
+        unordered_map<int, unsigned int>::const_iterator iter;
         for (iter = temp[i].begin(); iter != temp[i].end(); iter++)
         {
             undoSellOrder[i][iter->first] += iter->second;

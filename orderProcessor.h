@@ -25,8 +25,8 @@ public:
     orderProcessor(int n);
     ~orderProcessor();
     void setOpenPrice_iniVolumn_iniVolumnFlow(int *price0);                 //设置开盘价
-    void addBuyOrder (const map<int, unsigned int>* t);   //把生成的买单加到未处理队列
-    void addSellOrder(const map<int, unsigned int>* t);   //把生成的卖单加到未处理队列
+    void addBuyOrder (const unordered_map<int, unsigned int>* t);   //把生成的买单加到未处理队列
+    void addSellOrder(const unordered_map<int, unsigned int>* t);   //把生成的卖单加到未处理队列
     void shake();        //todo 抖动未处理订单，模拟订单撤回
     const int*        getPriceWithoutMove();   //单得到价格，不处理
     const int* getPriceNRecord(int date, int timeUnitNow, tradeRecord* tr = nullptr, bool usingRecord = false); //处理订单，得到价格，并记录
