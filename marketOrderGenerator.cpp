@@ -4,6 +4,9 @@
 
 #include "marketOrderGenerator.h"
 
+using std::cout;
+using std::endl;
+
 
 
 

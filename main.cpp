@@ -7,8 +7,9 @@
 #include <time.h>
 #include <random>
 
+using std::cout;
+using std::endl;
 
-using namespace std;
 
 int main() {
 

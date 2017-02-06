@@ -9,9 +9,9 @@
 #include <fstream>
 #include <string>
 
+using std::string;
 
 
-using namespace std;
 
 class tradeRecord {
 public:

@@ -4,6 +4,9 @@
 
 #include "orderProcessor.h"
 
+using std::cout;
+using std::endl;
+
 
 orderProcessor::orderProcessor(int n):stockNumber(n)
 {

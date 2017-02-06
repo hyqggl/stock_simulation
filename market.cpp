@@ -4,6 +4,14 @@
 
 #include "market.h"
 
+using std::cout;
+using std::endl;
+using std::ofstream;
+using std::ios;
+using std::ios_base;
+using std::fixed;
+using std::setprecision;
+
 market::market(int n, int totalTimeU, marketOrderGenerator& _mog, orderProcessor& _op, string recordDir, tradeRecord* trc, bool utr):stockNumber(n),mog(_mog), op(_op),p_tr(trc),totalTimeUnits(totalTimeU)
 , recordDir(recordDir), usingTradeRecord(utr)//todo
 {

@@ -11,7 +11,7 @@
 #include <random>
 #include "randomTable.h"
 
-using namespace std;
+using std::unordered_map;
 
 // 传入参数，传出订单
 class marketOrderGenerator

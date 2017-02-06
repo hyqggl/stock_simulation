@@ -10,7 +10,7 @@
 #include "tradeRecord.h"
 #include "order.h"
 
-using namespace std;
+using std::map;
 
 /**
  * 订单处理器

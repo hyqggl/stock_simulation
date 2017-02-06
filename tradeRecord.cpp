@@ -6,7 +6,12 @@
 #include <iostream>
 #include "tradeRecord.h"
 
-
+using std::cout;
+using std::endl;
+using std::stringstream;
+using std::ofstream;
+using std::ios;
+using std::ios_base;
 
 
 void tradeRecord::addRecord(int n, int date, int time, int price, unsigned int number)

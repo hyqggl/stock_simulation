@@ -2,6 +2,10 @@
 
 #include "randomTable.h"
 
+using std::cout;
+using std::endl;
+using std::map;
+
 randomTable::randomTable():gauss_V1(0),gauss_V2(0),gauss_S(0),gauss_phase(0)
 {
     gaussTableGened = false;

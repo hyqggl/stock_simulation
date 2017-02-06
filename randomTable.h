@@ -11,7 +11,7 @@
 #include <map>
 #include <iostream>
 
-using namespace std;
+using std::pair;
 
 class randomTable {
 public:
